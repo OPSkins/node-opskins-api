@@ -15,3 +15,14 @@ OPSkinsAPI.prototype.getSales = function(req, callback) {
 		}
 	});
 };
+
+OPSkinsAPI.prototype.editPrice = function(saleID, price, callback) {
+	this._requireKey();
+	this.post("ISales", "EditPrice", 1, {"saleid": saleID, "price": price}, function(err, res, meta) {
+		if (err) {
+			callback(err);
+		} else {
+			callback(null, !!res.relisted);
+		}
+	});
+};
