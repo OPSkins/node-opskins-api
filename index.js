@@ -97,6 +97,8 @@ OPSkinsAPI.prototype._req = function(httpMethod, iface, method, version, input, 
 			}
 
 			if (response.status != ErrorCode.OK) {
+				err.code = response.status;
+
 				if (response.message) {
 					err.message = response.message;
 				} else {
