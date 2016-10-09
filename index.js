@@ -66,7 +66,7 @@ OPSkinsAPI.prototype._req = function(httpMethod, iface, method, version, input, 
 		"headers": headers
 	}, function(res) {
 		var err = new Error();
-		err.statusCode = res.statusCode;
+		err.httpCode = res.statusCode;
 
 		if (res.statusCode != 200) {
 			err.message = res.statusMessage || "HTTP error " + res.statusCode;
