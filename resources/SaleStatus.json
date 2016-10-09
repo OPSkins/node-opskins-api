@@ -1,0 +1,8 @@
+{
+	"AwaitingPickup": 1,
+	"OnSale": 2,
+	"AwaitingDelivery": 3,
+	"Sold": 4,
+	"AwaitingReturn": 5,
+	"Returned": 6
+}

@@ -2,10 +2,11 @@ var Https = require('https');
 var QueryString = require('querystring');
 var Zlib = require('zlib');
 
-var ErrorCode = require('./ErrorCode.json');
+var ErrorCode = require('./resources/ErrorCode.json');
 
 module.exports = OPSkinsAPI;
 OPSkinsAPI.ErrorCode = ErrorCode;
+OPSkinsAPI.SaleStatus = require('./resources/SaleStatus.json');
 
 function OPSkinsAPI(key) {
 	this.key = key;
@@ -156,6 +157,7 @@ function userAgent() {
 }
 
 require('./interfaces/IPricing.js');
+require('./interfaces/ISales.js');
 require('./interfaces/ISupport.js');
 require('./interfaces/ITest.js');
 require('./interfaces/IUser.js');
