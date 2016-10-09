@@ -59,6 +59,11 @@ OPSkinsAPI.prototype._req = function(httpMethod, iface, method, version, input, 
 		path += "?" + input;
 	}
 
+	if (httpMethod == "POST" && input) {
+		headers['Content-Type'] = 'application/x-www-form-urlencoded';
+		headers['Content-Length'] = input.length;
+	}
+
 	var req = Https.request({
 		"host": "api.opskins.com",
 		"method": httpMethod,
