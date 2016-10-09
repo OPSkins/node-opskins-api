@@ -37,3 +37,18 @@ OPSkinsAPI.prototype.getListingLimit = function(callback) {
 		}
 	});
 };
+
+OPSkinsAPI.prototype.listItems = function(items, callback) {
+	if (!(items instanceof Array)) {
+		items = [items];
+	}
+
+	this._requireKey();
+	this.post("ISales", "ListItems", 1, {"items": JSON.stringify(items)}, function(err, res, meta) {
+		if (err) {
+			callback(err);
+		} else {
+			callback(null, res);
+		}
+	});
+};
