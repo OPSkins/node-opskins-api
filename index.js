@@ -138,6 +138,15 @@ OPSkinsAPI.prototype._req = function(httpMethod, iface, method, version, input, 
 	req.end(httpMethod == "POST" ? input : null);
 };
 
+OPSkinsAPI.prototype._requireKey = function() {
+	if (!this.key) {
+		throw new Error("API key required for this method");
+	}
+};
+
 function userAgent() {
 	return "node/" + process.versions.node + " node-opskins/" + require('./package.json').version;
 }
+
+require('./interfaces/ITest.js');
+require('./interfaces/IUser.js');
