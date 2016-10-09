@@ -26,3 +26,14 @@ OPSkinsAPI.prototype.editPrice = function(saleID, price, callback) {
 		}
 	});
 };
+
+OPSkinsAPI.prototype.getListingLimit = function(callback) {
+	this._requireKey();
+	this.get("ISales", "GetListingLimit", 1, function(err, res, meta) {
+		if (err) {
+			callback(err);
+		} else {
+			callback(null, res.listing_limit);
+		}
+	});
+};
