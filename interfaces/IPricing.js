@@ -19,3 +19,19 @@ OPSkinsAPI.prototype.getLowestPrices = function(appid, callback) {
 		}
 	});
 };
+
+OPSkinsAPI.prototype.getSuggestedPrices = function(appid, names, callback) {
+	this._requireKey();
+
+	if (!(names instanceof Array)) {
+		names = [names];
+	}
+
+	this.get("IPricing", "GetSuggestedPrices", 1, {"appid": appid, "items": names}, function(err, res, meta) {
+		if (err) {
+			callback(err);
+		} else {
+			callback(null, res.prices instanceof Array ? {} : res.prices);
+		}
+	});
+};
