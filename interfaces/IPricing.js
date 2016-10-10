@@ -5,7 +5,7 @@ OPSkinsAPI.prototype.getPriceList = function(appid, callback) {
 		if (err) {
 			callback(err);
 		} else {
-			callback(null, res, meta.time);
+			callback(null, res);
 		}
 	});
 };
@@ -15,7 +15,7 @@ OPSkinsAPI.prototype.getLowestPrices = function(appid, callback) {
 		if (err) {
 			callback(err);
 		} else {
-			callback(null, res, meta.time);
+			callback(null, res);
 		}
 	});
 };
