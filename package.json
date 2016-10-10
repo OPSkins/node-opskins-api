@@ -1,5 +1,5 @@
 {
-	"name": "opskins",
+	"name": "@opskins/api",
 	"version": "1.0.0",
 	"description": "Node.js interface for the OPSkins.com API",
 	"keywords": ["opskins", "op skins", "skins", "csgo", "csgo skins"],

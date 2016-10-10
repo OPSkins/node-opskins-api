@@ -12,17 +12,17 @@ divided by interface.
 
 First, you will need to install this module. To do so, simply type on the command line:
 
-    $ npm install opskins
+    $ npm install @opskins/api
     
 If you are developing an application which will depend on this module, you might want to save it in your `package.json`
 file as a dependency:
 
-    $ npm install --save opskins
+    $ npm install --save @opskins/api
 
 This package's root export is the `OPSkinsAPI` object, which you need to instantiate with your API key.
  
 ```js
-var OPSkinsAPI = require('opskins');
+var OPSkinsAPI = require('@opskins/api');
 var opskins = new OPSkinsAPI('yourapikey');
 ```
 
@@ -41,7 +41,7 @@ viewed here.](https://github.com/OPSkins/node-opskins/blob/master/resources/Erro
 enum, you will want to do something like this:
 
 ```js
-var OPSkinsAPI = require('opskins');
+var OPSkinsAPI = require('@opskins/api');
 var ErrorCode = OPSkinsAPI.ErrorCode;
 
 var code = getAnErrorCodeSomehow();
@@ -73,7 +73,7 @@ These sale statuses are available as an enum accessible via the `SaleStatus` pro
 [View this here.](https://github.com/OPSkins/node-opskins/blob/master/resources/SaleStatus.json) Example:
 
 ```js
-var OPSkinsAPI = require('opskins');
+var OPSkinsAPI = require('@opskins/api');
 var SaleStatus = OPSkinsAPI.SaleStatus;
 
 var status = getSaleStatusSomehow();
