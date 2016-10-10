@@ -3,8 +3,8 @@
 	"version": "1.0.0",
 	"description": "Node.js interface for the OPSkins.com API",
 	"keywords": ["opskins", "op skins", "skins", "csgo", "csgo skins"],
-	"bugs": "https://github.com/OPSkins/node-opskins/issues",
+	"bugs": "https://github.com/OPSkins/node-opskins-api/issues",
 	"license": "MIT",
 	"author": "OPSKINS GROUP INC.",
-	"repository": "OPSkins/node-opskins"
+	"repository": "OPSkins/node-opskins-api"
 }
