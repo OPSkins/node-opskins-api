@@ -181,6 +181,20 @@ then you may use [`getLowestPrices`](#getlowestpricesappid-callback).
  
 Gets a listing of items you listed on your account.
 
+### getActiveTradeOffers(callback)
+- `callback` - A function to be called when the request completes
+    - `err` - An `Error` object on failure, or `null` on success
+    - `offers` - An object whose keys are trade offer IDs. Each key contains an object with this structure:
+        - `saleids` - An array of sale IDs for the items contained in this offer
+        - `bot_id` - The internal OPSkins ID of the bot which sent this trade
+        - `bot_id64` - The 64-bit SteamID of the bot which sent this trade, as a string
+        - `type` - A string which is `pickup` if this offer is picking up new listings, `return` if this offer is returning listings to you, or `withdrawal` if this offer is delivering items from your OPSkins inventory
+
+**v1.1.0 or later is required to use this method**
+
+Gets a list of outstanding trade offers which have been sent to you. Note that there may be a delay between when you
+accept offers (particularly offers which are delivering items to you) and when they disappear from this list.
+
 ### editPrice(saleID, price, callback)
 - `saleID` - The numeric ID of the sale you wish to edit.
 - `price` - The desired new price for this sale, in USD cents.
