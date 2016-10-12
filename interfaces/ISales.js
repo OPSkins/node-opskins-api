@@ -52,3 +52,14 @@ OPSkinsAPI.prototype.listItems = function(items, callback) {
 		}
 	});
 };
+
+OPSkinsAPI.prototype.getActiveTradeOffers = function(callback) {
+	this._requireKey();
+	this.get("ISales", "GetActiveTradeOffers", 1, function(err, res, meta) {
+		if (err) {
+			callback(err);
+		} else {
+			callback(null, res.offers);
+		}
+	});
+};
