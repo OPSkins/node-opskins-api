@@ -248,6 +248,21 @@ accept offers (particularly offers which are delivering items to you) and when t
 Edits the price of one of your sales. If the item is in your OPSkins inventory, then calling this will list it for sale
 at the provided price.
 
+### editPrices(sales, callback)
+- `sales` - An object whose keys are sale IDs and values are new prices, in USD cents. 500 items max.
+- `callback` - A function to be called when the request completes
+    - `err` - An `Error` object on failure, or `null` on success
+
+**v1.2.0 or later is required to use this method**
+
+Edit the prices for multiple items in one go. This method queues price updates server-side, and the callback will be
+fired before any prices have actually been updated. The server will process your request and you will not be notified
+when it completes in any way, unless you request your sales list and check the prices yourself.
+
+This will fail if you attempt to queue a price update for an item which already has a queued price update. Price update
+errors will not be reported and will be silently dropped in the background. For example, requests to edit the prices of
+items you do not own or which do not exist will be accepted, but will not actually be processed.
+
 ### getListingLimit(callback)
 - `callback` - A function to be called when the request completes
     - `err` - An `Error` object on failure, or `null` on success

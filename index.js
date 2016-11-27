@@ -74,7 +74,7 @@ OPSkinsAPI.prototype._req = function(httpMethod, iface, method, version, input, 
 		var err = new Error();
 		err.httpCode = res.statusCode;
 
-		if (res.statusCode != 200) {
+		if (res.statusCode > 299) {
 			err.message = (res.statusCode == 401 ? "Invalid or missing API key" : (res.statusMessage || "HTTP error " + res.statusCode));
 			callback(err);
 			return;
