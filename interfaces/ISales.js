@@ -89,3 +89,25 @@ OPSkinsAPI.prototype.getActiveTradeOffers = function(callback) {
 		}
 	});
 };
+
+OPSkinsAPI.prototype.search = function(params, callback) {
+	this._requireKey();
+	this.get("ISales", "Search", 1, params, function(err, res) {
+		if (err) {
+			callback(err);
+		} else {
+			callback(null, res.sales);
+		}
+	});
+};
+
+OPSkinsAPI.prototype.buyItems = function(saleids, total, callback) {
+	this._requireKey();
+	this.post("ISales", "BuyItems", 1, {"saleids": saleids.join(','), "total": total}, function(err, res, meta) {
+		if (err) {
+			callback(err);
+		} else {
+			callback(null, res.items, meta.balance);
+		}
+	});
+};

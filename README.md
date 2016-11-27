@@ -305,6 +305,34 @@ If there are already sales created for any of these items but they do not curren
 sales will be deleted and new ones will be created. This means that if this request fails to send a trade offer, you may
 safely re-request it for the same items.
 
+### search(params, callback)
+- `params` - An object containing search parameters. Please [see here](https://opskins.com/kb/api-isales#method-search-v1) for documentation regarding this.
+- `callback` - A function to be called when the request completes
+    - `err` - An `Error` object on failure, or `null` on success
+
+**v1.2.0 or later is required to use this method**
+
+Search active OPSkins listings for particular items. This endpoint is relatively heavily rate-limited. Current limits
+are documented on the [OPSkins knowledgebase](https://opskins.com/kb/api-isales#method-search-v1).
+
+### buyItems(saleids, total, callback)
+- `saleids` - An array of OPSkins sale IDs for the items you want to buy
+- `total` - The total cost of the items you wish to buy, in USD cents. If this is not correct, the request will fail.
+- `callback` - A function to be called when the request completes
+    - `err` - An `Error` object on failure, or `null` on success
+    - `items` - An array of objects, each of which corresponds to an item you purchased. Each object has these properties:
+        - `saleid` - The OPSkins sale ID of the item. This will be one of the IDs you passed in.
+        - `new_itemid` - The new OPSkins ID of this item in your OPSkins inventory. This is the ID you need to pass to `withdrawInventoryItems` to withdraw the item to your Steam inventory.
+        - `name` - The name of the item
+        - `bot_id` - The internal OPSkins ID of the bot which is holding this item
+    - `balance` - Your new OPSkins account balance after this purchase, in USD cents
+
+**v1.2.0 or later is required to use this method**
+
+Purchase one or more items and deliver them to your OPSkins inventory. Once purchased, the item(s) can be delivered to
+your Steam inventory using `withdrawInventoryItems`. To prevent bot sniping, this endpoint will only purchase listings
+which have been publicly visible for at least ten minutes, and are not currently limited to Buyers Club members.
+
 ## ISupport
 
 ### repairItem(saleID, callback)
