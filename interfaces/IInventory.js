@@ -1,6 +1,7 @@
 var OPSkinsAPI = require('../index.js');
 
 OPSkinsAPI.prototype.getInventory = function(callback) {
+	this._requireKey();
 	this.get("IInventory", "GetInventory", 1, function(err, res) {
 		if (err) {
 			callback(err);
@@ -11,6 +12,8 @@ OPSkinsAPI.prototype.getInventory = function(callback) {
 };
 
 OPSkinsAPI.prototype.withdrawInventoryItems = function(items, callback) {
+	this._requireKey();
+
 	if (!(items instanceof Array)) {
 		items = [items];
 	}
