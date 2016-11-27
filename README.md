@@ -90,6 +90,49 @@ as the integer 542.
 
 # Methods
 
+## IInventory
+
+### getInventory(callback)
+- `callback` - A function to be called when the request completes.
+    - `err` - An `Error` object on failure, or `null` on success
+    - `inventory` - An array containing one object for each item in your OPSkins inventory. Each object has these properties:
+        - `id` - The OPSkins ID of the item. If you choose to relist this item, this will be its sale ID.
+        - `name` - The Steam name of the item
+        - `inspect` - If this item is inspectable, this is its inspect link. May be a steam:// link for CS:GO/TF2, or possibly an HTTP(S) link (e.g. Steam profile backgrounds)
+        - `type` - The Steam "type" of this item (displayed next to its game icon in the Steam inventory)
+        - `appid` - The Steam AppID of the game which owns this item
+        - `contextid` - The Steam context ID which contains this item
+        - `assetid` - The Steam asset ID of this item (unique within a given app + context combo)
+        - `classid` - The Steam class ID of this item
+        - `instanceid` - The Steam instance ID of this item
+        - `bot_id` - The internal ID of the bot which is holding this item
+        - `bot_id64` - The 64-bit SteamID of the bot which is holding this item (as a string)
+        - `added_time` - The Unix timestamp for when this item was added to your OPSkins inventory
+        - `offer_id` - If there is an outstanding withdrawal trade offer for this item, this is its ID. If not, this is null. If you have requested a trade offer that couldn't be sent immediately but is queued to be sent in the future, this is 0.
+        - `offer_declined` - If there was previously a withdrawal trade offer for this item but it was declined, this is true.
+        - `offer_untradable` - If we previously attempted to send a withdrawal trade offer for this item but we were unable to due to a bad trade URL or another trading restriction (e.g. Steam Guard), this is true.
+        - `requires_support` - If this item has a problem and requires support intervention before it can be withdrawn or relisted, this is true.
+        - `can_repair` - If this item requires support but you can attempt to self-repair it, this is true. If true, you can use ISupport/RepairItem to try to repair it.
+
+**v1.2.0 or later is required to use this method**
+
+Retrieves the contents of your [OPSkins inventory](https://opskins.com/?loc=inventory).
+
+### withdrawInventoryItems(items, callback)
+- `items` - Either a single OPSkins item ID, or an array of OPSkins item IDs.
+- `callback` - A function to be called when the request completes.
+    - `err` - An `Error` object on failure, or `null` on success. On failure, it may have `data.offers` defined, which is identical to the `offers` argument.
+    - `offers` - When all trade offers succeed, this is an array of objects. When one or more offers fail, this is available as `data.offers` on `err`. Each object has this structure:
+        - `bot_id` - The internal ID of the bot which sent (or tried to send) the trade offer
+        - `tradeoffer_id` - If we were able to successfully send a trade offer, this is its ID, as a string. If error, this is null.
+        - `tradeoffer_error` - If we were not able to send a trade offer, this is a string containing an error message. If no error, this is null.
+        - `items` - An array of OPSkins item IDs in this trade offer
+
+**v1.2.0 or later is required to use this method**
+
+Requests OPSkins bots to send you trade offers to withdraw one or more items from your OPSkins inventory to your Steam
+inventory.
+
 ## IPricing
 
 ### getPriceList(appid, callback)

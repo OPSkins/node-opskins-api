@@ -156,6 +156,7 @@ function userAgent() {
 	return "node/" + process.versions.node + " node-opskins/" + require('./package.json').version;
 }
 
+require('./interfaces/IInventory.js');
 require('./interfaces/IPricing.js');
 require('./interfaces/ISales.js');
 require('./interfaces/ISupport.js');
