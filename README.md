@@ -221,6 +221,38 @@ then you may use [`getLowestPrices`](#getlowestpricesappid-callback).
 - `req` - Optional. An object containing request filters. Available filters:
     - `page` - The number of the page you would like. Currently, there are 10,000 sales returned per page. Default is page 1.
     - `type` - Provide a [`SaleStatus`](#sale-status) value here to only return sales in that status. Default (omitted) is to get all statuses.
+- `callback` - A function to be called when the request completes
+	- `err` - An `Error` object on failure, or `null` on success
+	- `totalPages` - A number containing the total number of pages that exist in this listing
+	- `sales` - An array of objects, where each object represents one sale on your account. Each object has these properties:
+		- `id` - The item's OPSkins sale ID
+		- `price` - The item's list price, in USD cents
+		- `commission` - If the item has sold, this is how much OPSkins took in commission
+		- `tax` - If the item has sold, this is how much sales tax was taken from your cut
+		- `classid` - The item's Steam class ID
+		- `instanceid` - The item's Steam instance ID
+		- `appid` - The Steam AppID of the game to which this item belongs
+		- `contextid` - The Steam context ID to which this item belongs
+		- `assetid` - The Steam asset ID of this item, if it is awaiting pickup or is in our system
+		- `name` - The item's name
+		- `bot` - The internal OPSkins ID of the bot which is holding this item
+		- `bot_id64` - The 64-bit SteamID of the bot which is holding this item
+		- `offerid` - If there is an active trade offer for this item, this is its ID. May also be a negative value representing a [trade offer status code](https://opskins.com/kb/error-codes)
+		- `state` - The item's current [state](#sale-status)
+		- `escrow_end_date` - If the item is currently in a trade hold or a temporary trade lock (e.g. H1Z1), this is a Unix timestamp representing when the hold period will expire
+		- `list_time` - A Unix timestamp representing when the item was listed.
+			- If the item is awaiting pickup, this is the time when you sent the request to our servers to list the item
+			- If the item is on sale, this is the time when either our bot confirmed the Steam trade, or the time when you re-listed it from your OPSkins inventory, if applicable
+		- `bump_time` - A Unix timestamp representing when the item was last bumped. Will be at least the same as `list_time` if never bumped.
+		- `last_updated` - A Unix timestamp representing when the item last had its state or price changed. May be 0 for older items.
+		- `security_token` - The security token sent in the trade offer from our bot to pick up this item.
+		- `wear` - If this item has a wear value and it's known, this is it.
+		- `txid` - If the item has been sold, this is the transaction ID of the wallet transaction in which you were paid.
+		- `trade_locked` - A boolean representing whether or not the item is in a temporary (H1Z1) trade lock.
+			- If `escrow_end_date` is set and is in the future and this is `false`, then the item is in a Steam trade hold
+			- If `escrow_end_date` is set and is in the future and this is `true`, then the item is in a Daybreak trade lock
+		- `repair_attempted` - If the item requires support intervention and you have already attempted to repair it and the attempt failed, then this is `true`. If this is `true` then you will need to contact support to have this item fixed.
+		- `addons` - An array of strings for each addon which is applied to this item.
  
 Gets a listing of items you listed on your account.
 
