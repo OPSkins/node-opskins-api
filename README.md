@@ -60,12 +60,12 @@ The `Error` object's `message` will usually be a descriptive error message as we
 An item in the OPSkins system is referred to as a *sale*. Each sale has a *status*, which indicates what state it is in.
 Here are the available sale statuses, at time of writing:
 
-- `AWAITING_PICKUP` (1) - This sale has been created but the item has not been traded to an OPSkins storage account yet. There may or may not be an active trade offer for this sale.
-- `ON_SALE` (2) - This item has been traded to the storage account, and it is currently up for sale.
-- `AWAITING_DELIVERY` (3) - This item has been purchased, but it has not yet been delivered to its buyer. The seller has not yet been paid for this sale. It is possible that the buyer may refund this sale, which will put the sale back into state `ON_SALE` (2).
-- `SOLD` (4) - This item has been sold and delivered. The seller has now been paid for this sale. *
-- `AWAITING_RETURN` (5) - The seller has taken this item off of sale and requested that it be returned to their Steam inventory, but the return is not yet complete. There may or may not be an active trade offer for this sale to return it to its seller.
-- `RETURNED` (6) - The seller has taken this item off of sale and it has been returned to their Steam inventory. *
+- `AwaitingPickup` (1) - This sale has been created but the item has not been traded to an OPSkins storage account yet. There may or may not be an active trade offer for this sale.
+- `OnSale` (2) - This item has been traded to the storage account, and it is currently up for sale.
+- `AwaitingDelivery` (3) - This item has been purchased, but it has not yet been delivered to its buyer. The seller has not yet been paid for this sale. It is possible that the buyer may refund this sale, which will put the sale back into state `ON_SALE` (2).
+- `Sold` (4) - This item has been sold and delivered. The seller has now been paid for this sale. *
+- `AwaitingReturn` (5) - The seller has taken this item off of sale and requested that it be returned to their Steam inventory, but the return is not yet complete. There may or may not be an active trade offer for this sale to return it to its seller.
+- `Returned` (6) - The seller has taken this item off of sale and it has been returned to their Steam inventory. *
 
 *\* = It is not possible (under normal circumstances) for an item to change from this state to another one.*
 
@@ -78,7 +78,7 @@ var SaleStatus = OPSkinsAPI.SaleStatus;
 
 var status = getSaleStatusSomehow();
 
-if (status == SaleStatus.ON_SALE) {
+if (status == SaleStatus.OnSale) {
 	// this item is currently on sale
 }
 ```
