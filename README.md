@@ -423,6 +423,8 @@ Gets your OPSkins account's current balance.
     - `err` - An `Error` object on failure, or `null` on success
     - `bots` - An object with numeric keys corresponding to a specific bots internal ID, and Steam 64 ID.
 
+**v1.3.0 or later is required to use this method**
+
 Retrieves a listing of all active OPSkins bots, namely their internal IDs (the number in their Steam name), their SteamIDs, and their online status.
 
 You may wish to note that some internal IDs have either been skipped or retired, so this list is not exactly sequential.
