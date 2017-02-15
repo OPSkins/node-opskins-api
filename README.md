@@ -88,6 +88,30 @@ if (status == SaleStatus.OnSale) {
 All prices accepted as input and provided as output are in USD cents. This means that a price of $5.42 is represented
 as the integer 542.
 
+# HTTPS Agent
+
+As of v1.3.0, by default the module will create a single `keepAlive` HTTPS agent and use it for all requests. This means
+reduced latency for requests after the first one within a relatively small time period.
+
+If you need to, you can specify your own Agent by overriding the `getAgent` method. For example:
+
+```js
+var OPSkins = require('@opskins/api');
+var op = new OPSkins();
+
+op.getAgent = function() {
+	return new SomeCustomAgent();
+};
+
+op.getSteamID(function(err, steamID) {
+	if (err) {
+	    console.log(err);
+    } else {
+		console.log("My SteamID is " + steamID);
+    }
+});
+```
+
 # Methods
 
 ## IInventory
