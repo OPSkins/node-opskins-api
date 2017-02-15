@@ -457,5 +457,11 @@ You may wish to note that some internal IDs have either been skipped or retired,
 
 # Events
 
-## debug
-- `message` - A string containing the debug message. Currently only emits an API request path and your request parameters.
+### queryLimit
+- `queriesRemaining` - How many queries you have left today.
+
+Emitted when a request completes and includes an `X-Queries-Remaining` header, indicating how many queries you have
+left available for your API key. Query limits reset daily at approximately midnight Eastern Time.
+
+### debug
+- `message` - A string containing the debug message.

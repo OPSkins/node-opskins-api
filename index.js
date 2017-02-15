@@ -106,6 +106,10 @@ OPSkinsAPI.prototype._req = function(httpMethod, iface, method, version, input, 
 			}
 		});
 
+		if (res.headers['x-queries-remaining']) {
+			self.emit('queryLimit', parseInt(res.headers['x-queries-remaining'], 10));
+		}
+
 		if (res.statusCode > 299) {
 			err.message = (res.statusCode == 401 ? "Invalid or missing API key" : (res.statusMessage || "HTTP error " + res.statusCode));
 
