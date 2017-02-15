@@ -337,6 +337,21 @@ If there are already sales created for any of these items but they do not curren
 sales will be deleted and new ones will be created. This means that if this request fails to send a trade offer, you may
 safely re-request it for the same items.
 
+### returnItems(saleids, callback)
+- `saleids` - An array of sale IDs
+- `callback` - A function to be called when the request completes
+    - `err` - An `Error` object on failure, or `null` on success
+    - `offers` - An array of objects, where each object in this array represents one trade offer that we sent (or tried to send)
+        - `bot_id` - The internal ID of the bot that sent (or tried to send) this offer
+        - `items` - An array of sale IDs that are in this offer
+        - `tradeoffer_id` - The ID of the offer we sent as a string, on success; `null` on failure
+        - `tradeoffer_error` - An error message explaining why the offer couldn't be sent, on failure; `null` on success
+
+**v1.3.0 or later is required to use this method**
+
+Requests the return of one or more items you currently have listed for sale on your account. These items must currently
+be on sale (state 2) or awaiting return (state 5), and must not already have a trade offer out.
+
 ### search(params, callback)
 - `params` - An object containing search parameters. Please [see here](https://opskins.com/kb/api-isales#method-search-v1) for documentation regarding this.
 - `callback` - A function to be called when the request completes

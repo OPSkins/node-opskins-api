@@ -79,6 +79,19 @@ OPSkinsAPI.prototype.listItems = function(items, callback) {
 	});
 };
 
+OPSkinsAPI.prototype.returnItems = function(saleids, callback) {
+	this._requireKey();
+	this.post("ISales", "ReturnItems", 1, {"items": saleids.join(',')}, function(err, res, meta) {
+		if (err && !res) {
+			callback(err);
+		} else if (!res.offers) {
+			callback(new Error("Malformed response"));
+		} else {
+			callback(null, res.offers);
+		}
+	});
+};
+
 OPSkinsAPI.prototype.getActiveTradeOffers = function(callback) {
 	this._requireKey();
 	this.get("ISales", "GetActiveTradeOffers", 1, function(err, res, meta) {
