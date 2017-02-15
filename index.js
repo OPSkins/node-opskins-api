@@ -1,6 +1,8 @@
 var Https = require('https');
 var QueryString = require('querystring');
 var Zlib = require('zlib');
+var util = require('util');
+var EventEmitter = require('events').EventEmitter;
 
 var ErrorCode = require('./resources/ErrorCode.json');
 
@@ -8,6 +10,7 @@ module.exports = OPSkinsAPI;
 OPSkinsAPI.ErrorCode = ErrorCode;
 OPSkinsAPI.SaleStatus = require('./resources/SaleStatus.json');
 
+util.inherits(OPSkinsAPI, EventEmitter);
 function OPSkinsAPI(key) {
 	this.key = key;
 }
@@ -27,6 +30,7 @@ OPSkinsAPI.prototype._req = function(httpMethod, iface, method, version, input, 
 	}
 
 	input = input || {};
+	var rawInput = input;
 
 	// preprocess arrays
 	for (var i in input) {
@@ -65,8 +69,11 @@ OPSkinsAPI.prototype._req = function(httpMethod, iface, method, version, input, 
 		headers['Content-Length'] = input.length;
 	}
 
+	const base = "api.opskins.com";
+	this.emit('debug', httpMethod + ' request to ' + base + path + ' with input: ' + JSON.stringify(rawInput));
+
 	var req = Https.request({
-		"host": "api.opskins.com",
+		"host": base,
 		"method": httpMethod,
 		"path": path,
 		"headers": headers
@@ -162,3 +169,4 @@ require('./interfaces/ISales.js');
 require('./interfaces/ISupport.js');
 require('./interfaces/ITest.js');
 require('./interfaces/IUser.js');
+require('./interfaces/IStatus.js');
