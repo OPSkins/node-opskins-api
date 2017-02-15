@@ -112,6 +112,8 @@ op.getSteamID(function(err, steamID) {
 });
 ```
 
+All requests are HTTPS, so your agent should be based on `require('https').Agent`.
+
 # Methods
 
 ## IInventory
