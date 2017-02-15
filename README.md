@@ -62,12 +62,12 @@ Here are the available sale statuses, at time of writing:
 
 - `AwaitingPickup` (1) - This sale has been created but the item has not been traded to an OPSkins storage account yet. There may or may not be an active trade offer for this sale.
 - `OnSale` (2) - This item has been traded to the storage account, and it is currently up for sale.
-- `AwaitingDelivery` (3) - This item has been purchased, but it has not yet been delivered to its buyer. The seller has not yet been paid for this sale. It is possible that the buyer may refund this sale, which will put the sale back into state `ON_SALE` (2).
+- `AwaitingDelivery` (3) - This item has been purchased, but it has not yet been delivered to its buyer. The seller has not yet been paid for this sale. It is possible that the buyer may refund this sale, which will put the sale back into state `OnSale` (2).
 - `Sold` (4) - This item has been sold and delivered. The seller has now been paid for this sale. *
 - `AwaitingReturn` (5) - The seller has taken this item off of sale and requested that it be returned to their Steam inventory, but the return is not yet complete. There may or may not be an active trade offer for this sale to return it to its seller.
 - `Returned` (6) - The seller has taken this item off of sale and it has been returned to their Steam inventory. *
 
-*\* = It is not possible (under normal circumstances) for an item to change from this state to another one.*
+\* = It is not possible (under normal circumstances) for an item to change from this state to another one.
 
 These sale statuses are available as an enum accessible via the `SaleStatus` property of the `OPSkinsAPI` object.
 [View this here.](https://github.com/OPSkins/node-opskins/blob/master/resources/SaleStatus.json) Example:
