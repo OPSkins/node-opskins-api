@@ -23,6 +23,15 @@ OPSkinsAPI.prototype.post = function(iface, method, version, input, callback) {
 	this._req("POST", iface, method, version, input, callback);
 };
 
+OPSkinsAPI.prototype.getAgent = function() {
+	if (this._agent) {
+		return this._agent;
+	} else {
+		this._agent = new Https.Agent({"keepAlive": true});
+		return this._agent;
+	}
+};
+
 OPSkinsAPI.prototype._req = function(httpMethod, iface, method, version, input, callback) {
 	if (typeof input === 'function') {
 		callback = input;
@@ -48,7 +57,7 @@ OPSkinsAPI.prototype._req = function(httpMethod, iface, method, version, input, 
 	}
 
 	var headers = {"Accept-Encoding": "gzip", "User-Agent": userAgent()};
-	if (this.key) {
+	if (this.key && !(iface == 'IPricing' && method == 'GetPriceList')) {
 		headers.Authorization = "Basic " + (new Buffer(this.key + ":", 'ascii')).toString('base64');
 	}
 
@@ -69,20 +78,45 @@ OPSkinsAPI.prototype._req = function(httpMethod, iface, method, version, input, 
 		headers['Content-Length'] = input.length;
 	}
 
+	if (this._cfduid) {
+		headers['Cookie'] = '__cfduid=' + this._cfduid;
+	}
+
 	const base = "api.opskins.com";
-	this.emit('debug', httpMethod + ' request to ' + base + path + ' with input: ' + JSON.stringify(rawInput));
+	this.emit('debug', httpMethod + ' request to https://' + base + path + ' with input: ' + JSON.stringify(rawInput));
+	var self = this;
 
 	var req = Https.request({
 		"host": base,
 		"method": httpMethod,
 		"path": path,
-		"headers": headers
+		"headers": headers,
+		"agent": this.getAgent()
 	}, function(res) {
 		var err = new Error();
 		err.httpCode = res.statusCode;
 
+		self.emit('debug', "https://" + base + path + " headers: " + JSON.stringify(res.headers));
+
+		// Extract __cfduid cookie if it's there
+		(res.headers['set-cookie'] || []).forEach(function(cookie) {
+			cookie = cookie.split(';')[0].trim().split('=').map(function(part) { return part.trim(); })
+			if (cookie[0] == '__cfduid') {
+				self._cfduid = cookie[1];
+			}
+		});
+
+		if (res.headers['x-queries-remaining']) {
+			self.emit('queryLimit', parseInt(res.headers['x-queries-remaining'], 10));
+		}
+
 		if (res.statusCode > 299) {
 			err.message = (res.statusCode == 401 ? "Invalid or missing API key" : (res.statusMessage || "HTTP error " + res.statusCode));
+
+			if (res.headers['cf-ray']) {
+				err.ray = res.headers['cf-ray'];
+			}
+
 			callback(err);
 			return;
 		}

@@ -62,12 +62,12 @@ Here are the available sale statuses, at time of writing:
 
 - `AwaitingPickup` (1) - This sale has been created but the item has not been traded to an OPSkins storage account yet. There may or may not be an active trade offer for this sale.
 - `OnSale` (2) - This item has been traded to the storage account, and it is currently up for sale.
-- `AwaitingDelivery` (3) - This item has been purchased, but it has not yet been delivered to its buyer. The seller has not yet been paid for this sale. It is possible that the buyer may refund this sale, which will put the sale back into state `ON_SALE` (2).
+- `AwaitingDelivery` (3) - This item has been purchased, but it has not yet been delivered to its buyer. The seller has not yet been paid for this sale. It is possible that the buyer may refund this sale, which will put the sale back into state `OnSale` (2).
 - `Sold` (4) - This item has been sold and delivered. The seller has now been paid for this sale. *
 - `AwaitingReturn` (5) - The seller has taken this item off of sale and requested that it be returned to their Steam inventory, but the return is not yet complete. There may or may not be an active trade offer for this sale to return it to its seller.
 - `Returned` (6) - The seller has taken this item off of sale and it has been returned to their Steam inventory. *
 
-*\* = It is not possible (under normal circumstances) for an item to change from this state to another one.*
+\* = It is not possible (under normal circumstances) for an item to change from this state to another one.
 
 These sale statuses are available as an enum accessible via the `SaleStatus` property of the `OPSkinsAPI` object.
 [View this here.](https://github.com/OPSkins/node-opskins/blob/master/resources/SaleStatus.json) Example:
@@ -87,6 +87,32 @@ if (status == SaleStatus.OnSale) {
 
 All prices accepted as input and provided as output are in USD cents. This means that a price of $5.42 is represented
 as the integer 542.
+
+# HTTPS Agent
+
+As of v1.3.0, by default the module will create a single `keepAlive` HTTPS agent and use it for all requests. This means
+reduced latency for requests after the first one within a relatively small time period.
+
+If you need to, you can specify your own Agent by overriding the `getAgent` method. For example:
+
+```js
+var OPSkins = require('@opskins/api');
+var op = new OPSkins();
+
+op.getAgent = function() {
+	return new SomeCustomAgent();
+};
+
+op.getSteamID(function(err, steamID) {
+	if (err) {
+	    console.log(err);
+    } else {
+		console.log("My SteamID is " + steamID);
+    }
+});
+```
+
+All requests are HTTPS, so your agent should be based on `require('https').Agent`.
 
 # Methods
 
@@ -337,6 +363,21 @@ If there are already sales created for any of these items but they do not curren
 sales will be deleted and new ones will be created. This means that if this request fails to send a trade offer, you may
 safely re-request it for the same items.
 
+### returnItems(saleids, callback)
+- `saleids` - An array of sale IDs
+- `callback` - A function to be called when the request completes
+    - `err` - An `Error` object on failure, or `null` on success
+    - `offers` - An array of objects, where each object in this array represents one trade offer that we sent (or tried to send)
+        - `bot_id` - The internal ID of the bot that sent (or tried to send) this offer
+        - `items` - An array of sale IDs that are in this offer
+        - `tradeoffer_id` - The ID of the offer we sent as a string, on success; `null` on failure
+        - `tradeoffer_error` - An error message explaining why the offer couldn't be sent, on failure; `null` on success
+
+**v1.3.0 or later is required to use this method**
+
+Requests the return of one or more items you currently have listed for sale on your account. These items must currently
+be on sale (state 2) or awaiting return (state 5), and must not already have a trade offer out.
+
 ### search(params, callback)
 - `params` - An object containing search parameters. Please [see here](https://opskins.com/kb/api-isales#method-search-v1) for documentation regarding this.
 - `callback` - A function to be called when the request completes
@@ -408,11 +449,19 @@ Gets your OPSkins account's current balance.
     - `err` - An `Error` object on failure, or `null` on success
     - `bots` - An object with numeric keys corresponding to a specific bots internal ID, and Steam 64 ID.
 
+**v1.3.0 or later is required to use this method**
+
 Retrieves a listing of all active OPSkins bots, namely their internal IDs (the number in their Steam name), their SteamIDs, and their online status.
 
 You may wish to note that some internal IDs have either been skipped or retired, so this list is not exactly sequential.
 
 # Events
 
-## debug
-- `message` - A string containing the debug message. Currently only emits an API request path and your request parameters.
+### queryLimit
+- `queriesRemaining` - How many queries you have left today.
+
+Emitted when a request completes and includes an `X-Queries-Remaining` header, indicating how many queries you have
+left available for your API key. Query limits reset daily at approximately midnight Eastern Time.
+
+### debug
+- `message` - A string containing the debug message.
