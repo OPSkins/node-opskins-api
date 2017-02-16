@@ -117,6 +117,9 @@ OPSkinsAPI.prototype._req = function(httpMethod, iface, method, version, input, 
 				err.ray = res.headers['cf-ray'];
 			}
 
+			// Discard the stream
+			res.on('data', devNull);
+
 			callback(err);
 			return;
 		}
@@ -196,6 +199,8 @@ OPSkinsAPI.prototype._requireKey = function() {
 function userAgent() {
 	return "node/" + process.versions.node + " node-opskins/" + require('./package.json').version;
 }
+
+function devNull() { }
 
 require('./interfaces/IInventory.js');
 require('./interfaces/IPricing.js');
