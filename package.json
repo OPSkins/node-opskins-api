@@ -1,6 +1,6 @@
 {
 	"name": "@opskins/api",
-	"version": "1.3.0",
+	"version": "1.3.1",
 	"description": "Node.js interface for the OPSkins.com API",
 	"keywords": ["opskins", "op skins", "skins", "csgo", "csgo skins"],
 	"bugs": "https://github.com/OPSkins/node-opskins-api/issues",
