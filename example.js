@@ -1,5 +1,5 @@
 var OPSkinsAPI = require('./index.js'); // Change this to require('@opskins/api') when installing from npm
-var opskins = new OPSkinsAPI('121fde9bb5f984c52eae51edce7e27');
+var opskins = new OPSkinsAPI('your_api_key');
 
 opskins.getSteamID(function(err, steamID) {
 	if (err) {
