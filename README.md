@@ -121,7 +121,7 @@ All requests are HTTPS, so your agent should be based on `require('https').Agent
 ### getInventory(callback)
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `inventory` - An array containing one object for each item in your OPSkins inventory. Each object has these properties:
+    - `items` - An array containing one object for each item in your OPSkins inventory. Each object has these properties:
         - `id` - The OPSkins ID of the item. If you choose to relist this item, this will be its sale ID.
         - `name` - The Steam name of the item
         - `inspect` - If this item is inspectable, this is its inspect link. May be a steam:// link for CS:GO/TF2, or possibly an HTTP(S) link (e.g. Steam profile backgrounds)
