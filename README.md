@@ -399,3 +399,20 @@ Gets the SteamID of the account which owns this API key.
     - `balance` - Your account's current balance, in USD cents
 
 Gets your OPSkins account's current balance.
+
+
+## IStatus
+
+### getBotList(callback)
+- `callback` - A function to be called when the request completes
+    - `err` - An `Error` object on failure, or `null` on success
+    - `bots` - An object with numeric keys corresponding to a specific bots internal ID, and Steam 64 ID.
+
+Retrieves a listing of all active OPSkins bots, namely their internal IDs (the number in their Steam name), their SteamIDs, and their online status.
+
+You may wish to note that some internal IDs have either been skipped or retired, so this list is not exactly sequential.
+
+# Events
+
+## debug
+- `message` - A string containing the debug message. Currently only emits an API request path and your request parameters.
