@@ -364,6 +364,20 @@ If there are already sales created for any of these items but they do not curren
 sales will be deleted and new ones will be created. This means that if this request fails to send a trade offer, you may
 safely re-request it for the same items.
 
+### bumpItems(saleids, callback)
+- `saleids` - An array of sale IDs
+- `callback` - A function to be called when the request completes
+    - `err` - An `Error` object on failure, or `null` on success
+    - `balance` - Your account's new balance, in USD cents
+    - `results` - An object whose keys are sale IDs, and values are objects with this structure:
+        - `status` - An `ErrorCode` indicating the result of bumping this item (1 = OK, indicates success)
+        - `message` - An error message ("OK" on success)
+
+**v1.4.0 or later is required to use this method**
+
+Bumps one or more items. Bumps cost $0.50, and this will be charged to your account balance (unless you have free bump
+credits on your account, in which case those will be consumed first).
+
 ### returnItems(saleids, callback)
 - `saleids` - An array of sale IDs
 - `callback` - A function to be called when the request completes
