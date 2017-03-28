@@ -65,7 +65,7 @@ OPSkinsAPI.prototype.getListingLimit = function(callback) {
 };
 
 OPSkinsAPI.prototype.listItems = function(items, callback) {
-	if (!(items instanceof Array)) {
+	if (!Array.isArray(items)) {
 		items = [items];
 	}
 
@@ -79,7 +79,27 @@ OPSkinsAPI.prototype.listItems = function(items, callback) {
 	});
 };
 
+OPSkinsAPI.prototype.bumpItems = function(saleids, callback) {
+	if (!Array.isArray(saleids)) {
+		saleids = [saleids];
+	}
+
+	this._requireKey();
+	this.post("ISales", "BumpItems", 1, {"items": saleids.join(',')}, function(err, res, meta) {
+		if (err) {
+			callback(err);
+			return;
+		}
+
+		callback(null, meta.balance, res.sales);
+	});
+};
+
 OPSkinsAPI.prototype.returnItems = function(saleids, callback) {
+	if (!Array.isArray(saleids)) {
+		saleids = [saleids];
+	}
+
 	this._requireKey();
 	this.post("ISales", "ReturnItems", 1, {"items": saleids.join(',')}, function(err, res, meta) {
 		if (err && !res) {
