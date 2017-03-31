@@ -10,3 +10,10 @@ OPSkinsAPI.prototype.getBalance = function(callback) {
 		}
 	});
 };
+
+OPSkinsAPI.prototype.updateTradeURL = function(url, callback) {
+	this._requireKey();
+	this.post("IUser", "SaveTradeURL", 1, function(err, res, meta) {
+		callback(err || null);
+	});
+};
