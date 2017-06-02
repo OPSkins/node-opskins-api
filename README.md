@@ -456,6 +456,16 @@ Gets the SteamID of the account which owns this API key.
 
 Gets your OPSkins account's current balance.
 
+### updateTradeURL(url, callback)
+- `url` - Your new Trade URL
+- `callback` - A function to be called when the request completes
+    - `err` - An `Error` object on failure, or `null` on success
+
+**v1.4.1 or later is required to use this method**
+
+Update the Steam Trade URL which is linked with your account. It must belong to the same Steam account as is linked
+to your OPSkins account.
+
 
 ## IStatus
 
