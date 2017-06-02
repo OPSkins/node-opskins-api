@@ -57,7 +57,7 @@ OPSkinsAPI.prototype._req = function(httpMethod, iface, method, version, input, 
 	}
 
 	var headers = {"Accept-Encoding": "gzip", "User-Agent": userAgent()};
-	if (this.key && !(iface == 'IPricing' && method == 'GetPriceList')) {
+	if (this.key && !(iface == 'IPricing' && ['GetPriceList', 'GetAllLowestListPrices'].indexOf(method) != -1)) {
 		headers.Authorization = "Basic " + (new Buffer(this.key + ":", 'ascii')).toString('base64');
 	}
 
