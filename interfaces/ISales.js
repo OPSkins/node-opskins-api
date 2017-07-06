@@ -6,6 +6,10 @@ OPSkinsAPI.prototype.getSales = function(req, callback) {
 		req = {};
 	}
 
+	if (!req.type) {
+		throw new Error("The \"type\" filter is required");
+	}
+
 	this._requireKey();
 	this.get("ISales", "GetSales", 1, req, function(err, res, meta) {
 		if (err) {

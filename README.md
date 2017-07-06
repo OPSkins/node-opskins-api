@@ -245,9 +245,9 @@ then you may use [`getLowestPrices`](#getlowestpricesappid-callback).
 ## ISales
 
 ### getSales([req, ]callback)
-- `req` - Optional. An object containing request filters. Available filters:
+- `req` - **Required.** An object containing request filters. Available filters:
+    - `type` - **Required.** Provide a [`SaleStatus`](#sale-status) value here to only return sales in that status. Default (omitted) is to get all statuses.
     - `page` - The number of the page you would like. Currently, there are 10,000 sales returned per page. Default is page 1.
-    - `type` - Provide a [`SaleStatus`](#sale-status) value here to only return sales in that status. Default (omitted) is to get all statuses.
 - `callback` - A function to be called when the request completes
 	- `err` - An `Error` object on failure, or `null` on success
 	- `totalPages` - A number containing the total number of pages that exist in this listing
