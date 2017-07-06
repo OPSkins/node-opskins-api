@@ -9,6 +9,7 @@ var ErrorCode = require('./resources/ErrorCode.json');
 module.exports = OPSkinsAPI;
 OPSkinsAPI.ErrorCode = ErrorCode;
 OPSkinsAPI.SaleStatus = require('./resources/SaleStatus.json');
+OPSkinsAPI.CashoutProcessor = require('./resources/CashoutProcessor.json');
 
 util.inherits(OPSkinsAPI, EventEmitter);
 function OPSkinsAPI(key) {
@@ -202,6 +203,7 @@ function userAgent() {
 
 function devNull() { }
 
+require('./interfaces/ICashout.js');
 require('./interfaces/IInventory.js');
 require('./interfaces/IPricing.js');
 require('./interfaces/ISales.js');
