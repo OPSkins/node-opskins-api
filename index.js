@@ -41,6 +41,7 @@ OPSkinsAPI.prototype._req = function(httpMethod, iface, method, version, input, 
 
 	input = input || {};
 	var rawInput = input;
+	var errored = false;
 
 	// preprocess arrays
 	for (var i in input) {
@@ -94,6 +95,10 @@ OPSkinsAPI.prototype._req = function(httpMethod, iface, method, version, input, 
 		"headers": headers,
 		"agent": this.getAgent()
 	}, function(res) {
+		if (errored) {
+			return;
+		}
+
 		var err = new Error();
 		err.httpCode = res.statusCode;
 
@@ -125,6 +130,15 @@ OPSkinsAPI.prototype._req = function(httpMethod, iface, method, version, input, 
 			return;
 		}
 
+		res.on('error', function(err) {
+			if (errored) {
+				return;
+			}
+
+			errored = true;
+			callback(err);
+		});
+
 		var response = '';
 		var stream = res;
 
@@ -139,6 +153,12 @@ OPSkinsAPI.prototype._req = function(httpMethod, iface, method, version, input, 
 		});
 
 		stream.on('end', function() {
+			if (errored) {
+				return;
+			}
+
+			errored = true; // just in case
+
 			try {
 				response = JSON.parse(response);
 			} catch (e) {
@@ -189,6 +209,15 @@ OPSkinsAPI.prototype._req = function(httpMethod, iface, method, version, input, 
 
 	// send the actual request
 	req.end(httpMethod == "POST" ? input : null);
+
+	req.on('error', function(err) {
+		if (errored) {
+			return;
+		}
+
+		errored = true;
+		callback(err);
+	});
 };
 
 OPSkinsAPI.prototype._requireKey = function() {
