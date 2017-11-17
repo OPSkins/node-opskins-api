@@ -325,7 +325,7 @@ items you do not own or which do not exist will be accepted, but will not actual
 ### getListingLimit(callback)
 - `callback` - A function to be called when the request completes
     - `err` - An `Error` object on failure, or `null` on success
-    - `liimt` - The current limit of how many items you can list at one time via [`listItems`](#listitemsitems-callback)
+    - `limit` - The current limit of how many items you can list at one time via [`listItems`](#listitemsitems-callback)
 
 Gets the current limit of how many items you can list at one time via [`listItems`](#listitemsitems-callback).
 
