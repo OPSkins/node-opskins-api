@@ -81,9 +81,13 @@ OPSkinsAPI.prototype.requestPayPalCashout = function(amount, priority, callback)
 	});
 };
 
-OPSkinsAPI.prototype.requestBitcoinCashout = function(amount, callback) {
+OPSkinsAPI.prototype.requestBitcoinCashout = function(amount, priority, callback) {
 	this._requireKey();
-	this.post("ICashout", "RequestBitcoin", 1, {"amount": amount}, function(err, res) {
+	if (typeof priority === 'function') {
+		callback = priority;
+		priority = false;
+	}
+	this.post("ICashout", "RequestBitcoin", 1, {"amount": amount, "priority": priority ? 1 : 0}, function(err, res) {
 		if (!callback) {
 			return;
 		}
@@ -93,7 +97,28 @@ OPSkinsAPI.prototype.requestBitcoinCashout = function(amount, callback) {
 			return;
 		}
 
-		callback(null, res.cashoutid, res.address, res.priority);
+		callback(null, res.cashoutid, res.address, res.priority, res.bitcoin_txn_id, res.bitcoin_amount_satoshis);
+	});
+};
+
+OPSkinsAPI.prototype.requestEthereumCashout = function(amount, priority, callback) {
+	this._requireKey();
+
+	if (typeof priority === 'function') {
+		callback = priority;
+		priority = false;
+	}
+	this.post("ICashout", "RequestEthereum", 1, {"amount": amount, "priority": priority}, function(err, res) {
+		if (!callback) {
+			return;
+		}
+
+		if (err) {
+			callback(err);
+			return;
+		}
+
+		callback(null, res.cashoutid, res.address, res.priority, res.ethereum_txn_id, res.ether_amount_wei);
 	});
 };
 
@@ -110,5 +135,38 @@ OPSkinsAPI.prototype.requestSkrillCashout = function(amount, callback) {
 		}
 
 		callback(null, res.cashoutid, res.address, res.skrill_txn_id, res.skrill_txn_status, res.skrill_txn_status_msg);
+	});
+};
+
+OPSkinsAPI.prototype.getBitcoinInstantCashoutRate = function(callback) {
+	this._requireKey();
+	this.get("ICashout", "GetBitcoinInstantCashoutRate", 1, function(err, res) {
+		if (err) {
+			callback(err);
+			return;
+		}
+		callback(null, res.usd_rate);
+	});
+};
+
+OPSkinsAPI.prototype.getEthereumInstantCashoutRate = function(callback) {
+	this._requireKey();
+	this.get("ICashout", "GetEthereumInstantCashoutRate", 1, function(err, res) {
+		if (err) {
+			callback(err);
+			return;
+		}
+		callback(null, res.usd_rate);
+	});
+};
+
+OPSkinsAPI.prototype.getCashoutableBalance = function(callback) {
+	this._requireKey();
+	this.get("ICashout", "GetCashoutableBalance", 1, function(err, res) {
+		if (err) {
+			callback(err);
+			return;
+		}
+		callback(null, res);
 	});
 };

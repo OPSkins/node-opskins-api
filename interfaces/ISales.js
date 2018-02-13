@@ -148,3 +148,106 @@ OPSkinsAPI.prototype.buyItems = function(saleids, total, callback) {
 		}
 	});
 };
+
+OPSkinsAPI.prototype.getBumpConfirmation = function(callback) {
+	this._requireKey();
+	this.get("ISales", "GetBumpConfirmation", 1, function(err, res) {
+		if (err) {
+			callback(err);
+		} else {
+			callback(null, res);
+		}
+	});
+};
+
+OPSkinsAPI.prototype.getLastSales = function(appid, contextid, market_name, callback) {
+	this._requireKey();
+	this.get("ISales", "GetLastSales", 1, {
+		"appid": appid,
+		"contextid": contextid,
+		"market_name": market_name
+	}, function(err, res) {
+		if (err) {
+			callback(err);
+		} else {
+			callback(null, res);
+		}
+	});
+};
+
+OPSkinsAPI.prototype.getSaleDetails = function(saleid, callback) {
+	this._requireKey();
+	this.get("ISales", "GetSaleDetails", 1, {"saleid": saleid}, function(err, res) {
+		if (err) {
+			callback(err);
+		} else {
+			callback(null, res);
+		}
+	});
+};
+
+OPSkinsAPI.prototype.getSaleStatuses = function(callback) {
+	this._requireKey();
+	this.get("ISales", "GetSaleStatuses", 1, function(err, res) {
+		if (err) {
+			callback(err);
+		} else {
+			callback(null, res);
+		}
+	});
+};
+
+OPSkinsAPI.prototype.getSearchSchema = function(callback) {
+	this._requireKey();
+	this.get("ISales", "GetSearchSchema", 1, function(err, res) {
+		if (err) {
+			callback(err);
+		} else {
+			callback(null, res);
+		}
+	});
+};
+
+OPSkinsAPI.prototype.getSupportedSteamApps = function(callback) {
+	this._requireKey();
+	this.get("ISales", "GetSupportedSteamApps", 1, function(err, res) {
+		if (err) {
+			callback(err);
+		} else {
+			callback(null, res);
+		}
+	});
+};
+
+OPSkinsAPI.prototype.getSalesHistoryChartData = function(appid, contextid, market_name, days, phase, callback) {
+	this._requireKey();
+	this.get("ISales", "GetSalesHistoryChartData", 1, {
+		"appid": appid,
+		"contextid": contextid,
+		"market_name": market_name,
+		"days": days,
+		"phase": phase
+	}, function(err, res) {
+		if (err) {
+			callback(err);
+		} else {
+			callback(null, res);
+		}
+	});
+};
+
+OPSkinsAPI.prototype.returnItemsToInventory = function(items, callback) {
+	this._requireKey();
+	this.post("ISales", "ReturnItemsToInventory", 1, {"items": items}, function(err, res) {
+		if (!callback) {
+			return;
+		}
+
+		if (err) {
+			callback(err);
+			return;
+		}
+
+		callback(null, res);
+	});
+};

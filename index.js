@@ -10,6 +10,7 @@ module.exports = OPSkinsAPI;
 OPSkinsAPI.ErrorCode = ErrorCode;
 OPSkinsAPI.SaleStatus = require('./resources/SaleStatus.json');
 OPSkinsAPI.CashoutProcessor = require('./resources/CashoutProcessor.json');
+OPSkinsAPI.Currency = require('./resources/Currency.json');
 
 util.inherits(OPSkinsAPI, EventEmitter);
 function OPSkinsAPI(key) {
@@ -106,7 +107,7 @@ OPSkinsAPI.prototype._req = function(httpMethod, iface, method, version, input, 
 
 		// Extract __cfduid cookie if it's there
 		(res.headers['set-cookie'] || []).forEach(function(cookie) {
-			cookie = cookie.split(';')[0].trim().split('=').map(function(part) { return part.trim(); })
+			cookie = cookie.split(';')[0].trim().split('=').map(function(part) { return part.trim(); });
 			if (cookie[0] == '__cfduid') {
 				self._cfduid = cookie[1];
 			}
@@ -233,10 +234,15 @@ function userAgent() {
 function devNull() { }
 
 require('./interfaces/ICashout.js');
+require('./interfaces/ICrypto.js');
+require('./interfaces/IFeed.js');
 require('./interfaces/IInventory.js');
+require('./interfaces/ILocalization.js');
+require('./interfaces/IPayments.js');
 require('./interfaces/IPricing.js');
 require('./interfaces/ISales.js');
+require('./interfaces/IStatus.js');
 require('./interfaces/ISupport.js');
 require('./interfaces/ITest.js');
+require('./interfaces/ITransactions.js');
 require('./interfaces/IUser.js');
-require('./interfaces/IStatus.js');
