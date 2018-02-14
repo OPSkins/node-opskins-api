@@ -101,13 +101,9 @@ OPSkinsAPI.prototype.requestBitcoinCashout = function(amount, priority, callback
 	});
 };
 
-OPSkinsAPI.prototype.requestEthereumCashout = function(amount, priority, callback) {
+OPSkinsAPI.prototype.requestEthereumCashout = function(amount, callback) {
 	this._requireKey();
 
-	if (typeof priority === 'function') {
-		callback = priority;
-		priority = false;
-	}
 	this.post("ICashout", "RequestEthereum", 1, {"amount": amount, "priority": priority}, function(err, res) {
 		if (!callback) {
 			return;

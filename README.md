@@ -126,11 +126,11 @@ Arguments:
     - `err` - An `Error` object on failure, or `null` on success
     - `address` - Address
     - `processor_name` - Name of the processor
-    - `time` - Timestamp. Date object
+    - `time` - Timestamp when the address was set
     - `can_change` - Address can be changed
     - `can_change_requires_twofactor` - Changes required TFA
 
-[Opskins API: ICashout/GetAddress/v1](https://docs.opskins.com/public/en.html#ICashout_GetAddress_v1)
+[OPSkins API: ICashout/GetAddress/v1](https://docs.opskins.com/public/en.html#ICashout_GetAddress_v1)
 
 ### setCashoutAddress(processor, callback)
 
@@ -143,7 +143,7 @@ Arguments:
     - `address` - Address
     - `processor_name` - Name of the processor
 
-[Opskins API: ICashout/SetAddress/v1](https://docs.opskins.com/public/en.html#ICashout_SetAddress_v1)
+[OPSkins API: ICashout/SetAddress/v1](https://docs.opskins.com/public/en.html#ICashout_SetAddress_v1)
 
 ### getPendingCashouts(callback)
 
@@ -152,7 +152,7 @@ Arguments:
     - `err` - An `Error` object on failure, or `null` on success
     - `cashouts` - List of pending cashouts
 
-[Opskins API: ICashout/GetPendingCashouts/v1](https://docs.opskins.com/public/en.html#ICashout_GetPendingCashouts_v1)
+[OPSkins API: ICashout/GetPendingCashouts/v1](https://docs.opskins.com/public/en.html#ICashout_GetPendingCashouts_v1)
 
 ### cancelPendingCashout(cashoutID, callback)
 
@@ -161,7 +161,7 @@ Arguments:
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
 
-[Opskins API: ICashout/CancelPendingCashout/v1](https://docs.opskins.com/public/en.html#ICashout_CancelPendingCashout_v1)
+[OPSkins API: ICashout/CancelPendingCashout/v1](https://docs.opskins.com/public/en.html#ICashout_CancelPendingCashout_v1)
 
 
 ### requestPayPalCashout(amount, priority, callback)
@@ -175,7 +175,7 @@ Arguments:
     - `address` - Cashout address
     - `priority` - Priority
 
-[Opskins API: ICashout/RequestPayPal/v1](https://docs.opskins.com/public/en.html#ICashout_RequestPayPal_v1)
+[OPSkins API: ICashout/RequestPayPal/v1](https://docs.opskins.com/public/en.html#ICashout_RequestPayPal_v1)
 
 ### requestBitcoinCashout(amount, priority, callback)
 
@@ -190,13 +190,12 @@ Arguments:
     - `bitcoin_txn_id` - Bitcoin transaction ID
     - `bitcoin_amount_satoshis` - Amount in satoshis
 
-[Opskins API: ICashout/RequestBitcoin/v1](https://docs.opskins.com/public/en.html#ICashout_RequestBitcoin_v1)
+[OPSkins API: ICashout/RequestBitcoin/v1](https://docs.opskins.com/public/en.html#ICashout_RequestBitcoin_v1)
 
-### requestEthereumCashout(amount, priority, callback)
+### requestEthereumCashout(amount, callback)
 
 Arguments:
 - `amount` - Cashout amount
-- `priority` - Cashout priority (optional)
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
     - `cashoutid` - Cashout ID
@@ -205,7 +204,7 @@ Arguments:
     - `ethereum_txn_id` - Ethereum transaction ID
     - `ether_amount_wei` - Amount in wei
 
-[Opskins API: ICashout/RequestEthereum/v1](https://docs.opskins.com/public/en.html#ICashout_RequestEthereum_v1)
+[OPSkins API: ICashout/RequestEthereum/v1](https://docs.opskins.com/public/en.html#ICashout_RequestEthereum_v1)
 
 ### requestSkrillCashout(amount, callback)
 
@@ -219,7 +218,7 @@ Arguments:
     - `skrill_txn_status` - Skrill transaction status
     - `skrill_txn_status_msg` - Skrill transaction status message
 
-[Opskins API: ICashout/RequestSkrill/v1](https://docs.opskins.com/public/en.html#ICashout_RequestSkrill_v1)
+[OPSkins API: ICashout/RequestSkrill/v1](https://docs.opskins.com/public/en.html#ICashout_RequestSkrill_v1)
 
 ### getBitcoinInstantCashoutRate(callback)
 
@@ -228,7 +227,7 @@ Arguments:
     - `err` - An `Error` object on failure, or `null` on success
     - `usd_rate` - The price per 1 BTC, in USD (dollars, not cents)
 
-[Opskins API: ICashout/GetBitcoinInstantCashoutRate/v1](https://docs.opskins.com/public/en.html#ICashout_GetBitcoinInstantCashoutRate_v1)
+[OPSkins API: ICashout/GetBitcoinInstantCashoutRate/v1](https://docs.opskins.com/public/en.html#ICashout_GetBitcoinInstantCashoutRate_v1)
 
 ### getBitcoinInstantCashoutRate(callback)
 
@@ -237,16 +236,16 @@ Arguments:
     - `err` - An `Error` object on failure, or `null` on success
     - `usd_rate` - The price per 1 ETH, in USD (dollars, not cents)
 
-[Opskins API: ICashout/GetEthereumInstantCashoutRate/v1](https://docs.opskins.com/public/en.html#ICashout_GetEthereumInstantCashoutRate_v1)
+[OPSkins API: ICashout/GetEthereumInstantCashoutRate/v1](https://docs.opskins.com/public/en.html#ICashout_GetEthereumInstantCashoutRate_v1)
 
 ### getCashoutableBalance(callback)
 
 Arguments:
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
 
-[Opskins API: ICashout/GetCashoutableBalance/v1](https://docs.opskins.com/public/en.html#ICashout_GetCashoutableBalance_v1)
+[OPSkins API: ICashout/GetCashoutableBalance/v1](https://docs.opskins.com/public/en.html#ICashout_GetCashoutableBalance_v1)
 
 ## ICrypto
 
@@ -258,9 +257,9 @@ Arguments:
 - `amount` - Amount
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
 
-[Opskins API: ICrypto/ConvertCurrencies/v1](https://docs.opskins.com/public/en.html#ICrypto_ConvertCurrencies_v1)
+[OPSkins API: ICrypto/ConvertCurrencies/v1](https://docs.opskins.com/public/en.html#ICrypto_ConvertCurrencies_v1)
 
 ### getCurrencyAddress(currency, callback)
 
@@ -268,12 +267,12 @@ Arguments:
 - `currency` - Currency ID
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     - `currency_id` - Currency ID
     - `currency_code` - Currency code
     - `address` - Address
 
-[Opskins API: ICrypto/GetAddress/v1](https://docs.opskins.com/public/en.html#ICrypto_GetAddress_v1)
+[OPSkins API: ICrypto/GetAddress/v1](https://docs.opskins.com/public/en.html#ICrypto_GetAddress_v1)
 
 ### getCryptoConvertedAmount(from, amount, callback)
 
@@ -282,18 +281,18 @@ Arguments:
 - `amount` - Amount to convert
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `rates` - See Opskins API documentation for details
+    - `rates` - See OPSkins API documentation for details
     
-[Opskins API: ICrypto/GetCryptoConvertedAmount/v1](https://docs.opskins.com/public/en.html#ICrypto_GetCryptoConvertedAmount_v1)
+[OPSkins API: ICrypto/GetCryptoConvertedAmount/v1](https://docs.opskins.com/public/en.html#ICrypto_GetCryptoConvertedAmount_v1)
 
 ### getCryptoCurrencies(callback)
 
 Arguments:
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `currencies` - See Opskins API documentation for details
+    - `currencies` - See OPSkins API documentation for details
     
-[Opskins API: ICrypto/GetCurrencies/v1](https://docs.opskins.com/public/en.html#ICrypto_GetCurrencies_v1)
+[OPSkins API: ICrypto/GetCurrencies/v1](https://docs.opskins.com/public/en.html#ICrypto_GetCurrencies_v1)
 
 ### getCryptoWithdrawList(page, callback)
 
@@ -305,7 +304,7 @@ Arguments:
     - `items` - List of items
     - `statuses` - List of available statuses
     
-[Opskins API: ICrypto/GetWithdrawList/v1](https://docs.opskins.com/public/en.html#ICrypto_GetWithdrawList_v1)
+[OPSkins API: ICrypto/GetWithdrawList/v1](https://docs.opskins.com/public/en.html#ICrypto_GetWithdrawList_v1)
 
 ### setCryptoCashoutAddress(currency, address, callback)
 
@@ -318,7 +317,7 @@ Arguments:
     - `currency_code` - Currency code
     - `address` - Address
 
-[Opskins API: ICrypto/SetAddress/v1](https://docs.opskins.com/public/en.html#ICrypto_SetAddress_v1)
+[OPSkins API: ICrypto/SetAddress/v1](https://docs.opskins.com/public/en.html#ICrypto_SetAddress_v1)
 
 ### cryptoWithdraw(currency, address, callback)
 
@@ -327,9 +326,9 @@ Arguments:
 - `amount` - Amount
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: ICrypto/Withdraw/v1](https://docs.opskins.com/public/en.html#ICrypto_Withdraw_v1)
+[OPSkins API: ICrypto/Withdraw/v1](https://docs.opskins.com/public/en.html#ICrypto_Withdraw_v1)
 
 ## IFeed
 
@@ -340,7 +339,7 @@ Arguments:
     - `err` - An `Error` object on failure, or `null` on success
     - `banners` - List of banners
     
-[Opskins API: IFeed/GetHomepageBanners/v1](https://docs.opskins.com/public/en.html#IFeed_GetHomepageBanners_v1)
+[OPSkins API: IFeed/GetHomepageBanners/v1](https://docs.opskins.com/public/en.html#IFeed_GetHomepageBanners_v1)
 
 ### getFeaturedSales(callback)
 
@@ -349,7 +348,7 @@ Arguments:
     - `err` - An `Error` object on failure, or `null` on success
     - `featured` - List of featured sales
     
-[Opskins API: IFeed/GetFeatured/v1](https://docs.opskins.com/public/en.html#IFeed_GetFeatured_v1)
+[OPSkins API: IFeed/GetFeatured/v1](https://docs.opskins.com/public/en.html#IFeed_GetFeatured_v1)
 
 ## IInventory
 
@@ -362,9 +361,9 @@ Arguments:
     - `assetid` - Asset ID
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: IInventory/Deposit/v1](https://docs.opskins.com/public/en.html#IInventory_Deposit_v1)
+[OPSkins API: IInventory/Deposit/v1](https://docs.opskins.com/public/en.html#IInventory_Deposit_v1)
 
 ### getInstantSaleInventory(callback)
 
@@ -374,9 +373,10 @@ Arguments:
     - `items` - Inventory items
     - `commodities` - Commodities
     
-[Opskins API: IInventory/GetInstantSaleInventory/v1](https://docs.opskins.com/public/en.html#IInventory_GetInstantSaleInventory_v1)
+[OPSkins API: IInventory/GetInstantSaleInventory/v1](https://docs.opskins.com/public/en.html#IInventory_GetInstantSaleInventory_v1)
 
 ### getInventory(callback)
+**This method is deperecated, use getInventoryPage() instead**
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
     - `data` - An object containing these properties:
@@ -403,7 +403,7 @@ Arguments:
 
 Retrieves the contents of your [OPSkins inventory](https://opskins.com/?loc=inventory).
 
-[Opskins API: IInventory/GetInventory/v1](https://docs.opskins.com/public/en.html#IInventory_GetInventory_v1)
+[OPSkins API: IInventory/GetInventory/v1](https://docs.opskins.com/public/en.html#IInventory_GetInventory_v1)
 
 ### getInventoryPage(page, per_page, callback)
 
@@ -415,7 +415,7 @@ Arguments:
     - `limits` - Inventory limits
     - `items` - List of inventory items
     
-[Opskins API: IInventory/GetInventory/v2](https://docs.opskins.com/public/en.html#IInventory_GetInventory_v2)
+[OPSkins API: IInventory/GetInventory/v2](https://docs.opskins.com/public/en.html#IInventory_GetInventory_v2)
 
 ### getSteamInstantSellItems(callback)
 
@@ -428,7 +428,7 @@ Arguments:
     - `descriptions` - Descriptions
     - `commodities` - Commodities
     
-[Opskins API: IInventory/GetSteamInstantSellItems/v1](https://docs.opskins.com/public/en.html#IInventory_GetSteamInstantSellItems_v1)
+[OPSkins API: IInventory/GetSteamInstantSellItems/v1](https://docs.opskins.com/public/en.html#IInventory_GetSteamInstantSellItems_v1)
 
 ### withdrawInventoryItems(items, callback)
 - `items` - Either a single OPSkins item ID, or an array of OPSkins item IDs.
@@ -445,7 +445,7 @@ Arguments:
 Requests OPSkins bots to send you trade offers to withdraw one or more items from your OPSkins inventory to your Steam
 inventory.
 
-[Opskins API: IInventory/Withdraw/v1](https://docs.opskins.com/public/en.html#IInventory_Withdraw_v1)
+[OPSkins API: IInventory/Withdraw/v1](https://docs.opskins.com/public/en.html#IInventory_Withdraw_v1)
 
 ### withdrawCryptoAsset(callback)
 
@@ -454,9 +454,9 @@ Arguments:
 - `address` - Address
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
 
-[Opskins API: IInventory/WithdrawCryptoAsset/v1](https://docs.opskins.com/public/en.html#IInventory_WithdrawCryptoAsset_v1)
+[OPSkins API: IInventory/WithdrawCryptoAsset/v1](https://docs.opskins.com/public/en.html#IInventory_WithdrawCryptoAsset_v1)
 
 ## ILocalization
 
@@ -467,7 +467,7 @@ Arguments:
     - `err` - An `Error` object on failure, or `null` on success
     - `countries` - List of countries
     
-[Opskins API: ILocalization/GetCountriesRegions/v1](https://docs.opskins.com/public/en.html#ILocalization_GetCountriesRegions_v1)
+[OPSkins API: ILocalization/GetCountriesRegions/v1](https://docs.opskins.com/public/en.html#ILocalization_GetCountriesRegions_v1)
 
 ### getSupportedLanguages(callback)
 
@@ -476,7 +476,7 @@ Arguments:
     - `err` - An `Error` object on failure, or `null` on success
     - `lang` - List of supported languages
     
-[Opskins API: ILocalization/GetSiteLanguages/v1](https://docs.opskins.com/public/en.html#ILocalization_GetSiteLanguages_v1)
+[OPSkins API: ILocalization/GetSiteLanguages/v1](https://docs.opskins.com/public/en.html#ILocalization_GetSiteLanguages_v1)
 
 ## IPayments
 
@@ -487,36 +487,36 @@ Arguments:
 - `overwrite_old` - Replace old payment (optional, default - `false`)
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: IPayments/CreateBitcoinPayment/v1](https://docs.opskins.com/public/en.html#IPayments_CreateBitcoinPayment_v1)
+[OPSkins API: IPayments/CreateBitcoinPayment/v1](https://docs.opskins.com/public/en.html#IPayments_CreateBitcoinPayment_v1)
 
 ### getBitcoinAddress(callback)
 
 Arguments:
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: IPayments/GetBitcoinAddress/v1](https://docs.opskins.com/public/en.html#IPayments_GetBitcoinAddress_v1)
+[OPSkins API: IPayments/GetBitcoinAddress/v1](https://docs.opskins.com/public/en.html#IPayments_GetBitcoinAddress_v1)
 
 ### getBitcoinPaymentStatus(callback)
 
 Arguments:
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: IPayments/GetBitcoinPaymentStatus/v1](https://docs.opskins.com/public/en.html#IPayments_GetBitcoinPaymentStatus_v1)
+[OPSkins API: IPayments/GetBitcoinPaymentStatus/v1](https://docs.opskins.com/public/en.html#IPayments_GetBitcoinPaymentStatus_v1)
 
 ### getEthereumAddress(callback)
 
 Arguments:
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: IPayments/GetEthereumAddress/v1](https://docs.opskins.com/public/en.html#IPayments_GetEthereumAddress_v1)
+[OPSkins API: IPayments/GetEthereumAddress/v1](https://docs.opskins.com/public/en.html#IPayments_GetEthereumAddress_v1)
 
 ## IPricing
 
@@ -551,7 +551,7 @@ the following:
 }
 ```
 
-[Opskins API: IPricing/GetPriceList/v2](https://docs.opskins.com/public/en.html#IPricing_GetPriceList_v2)
+[OPSkins API: IPricing/GetPriceList/v2](https://docs.opskins.com/public/en.html#IPricing_GetPriceList_v2)
 
 ### getLowestPrices(appid, callback)
 - `appid` - The [Steam Application ID](https://developer.valvesoftware.com/wiki/Steam_Application_IDs) of the game for which you want prices. Use `753` for Steam Community items.
@@ -592,7 +592,7 @@ structure resembles the following:
 }
 ```
 
-[Opskins API: IPricing/GetAllLowestListPrices/v1](https://docs.opskins.com/public/en.html#IPricing_GetAllLowestListPrices_v1)
+[OPSkins API: IPricing/GetAllLowestListPrices/v1](https://docs.opskins.com/public/en.html#IPricing_GetAllLowestListPrices_v1)
 
 ### getSuggestedPrices(appid, items, callback)
 - `appid` - The [Steam Application ID](https://developer.valvesoftware.com/wiki/Steam_Application_IDs) of the game for which you want prices. Use `753` for Steam Community items.
@@ -604,7 +604,7 @@ structure resembles the following:
 Gets suggested prices for one or more items. Note that if you're interested in many OPSkins lowest price values,
 then you may use [`getLowestPrices`](#getlowestpricesappid-callback).
 
-[Opskins API: IPricing/GetSuggestedPrices/v1](https://docs.opskins.com/public/en.html#IPricing_GetSuggestedPrices_v1)
+[OPSkins API: IPricing/GetSuggestedPrices/v1](https://docs.opskins.com/public/en.html#IPricing_GetSuggestedPrices_v1)
 
 ## ISales
 
@@ -647,7 +647,7 @@ then you may use [`getLowestPrices`](#getlowestpricesappid-callback).
  
 Gets a listing of items you listed on your account.
 
-[Opskins API: ISales/GetSales/v1](https://docs.opskins.com/public/en.html#ISales_GetSales_v1)
+[OPSkins API: ISales/GetSales/v1](https://docs.opskins.com/public/en.html#ISales_GetSales_v1)
 
 ### getActiveTradeOffers(callback)
 - `callback` - A function to be called when the request completes
@@ -663,7 +663,7 @@ Gets a listing of items you listed on your account.
 Gets a list of outstanding trade offers which have been sent to you. Note that there may be a delay between when you
 accept offers (particularly offers which are delivering items to you) and when they disappear from this list.
 
-[Opskins API: ISales/GetActiveTradeOffers/v1](https://docs.opskins.com/public/en.html#ISales_GetActiveTradeOffers_v1)
+[OPSkins API: ISales/GetActiveTradeOffers/v1](https://docs.opskins.com/public/en.html#ISales_GetActiveTradeOffers_v1)
 
 ### editPrice(saleID, price, callback)
 - `saleID` - The numeric ID of the sale you wish to edit.
@@ -675,7 +675,7 @@ accept offers (particularly offers which are delivering items to you) and when t
 Edits the price of one of your sales. If the item is in your OPSkins inventory, then calling this will list it for sale
 at the provided price.
 
-[Opskins API: ISales/EditPrice/v1](https://docs.opskins.com/public/en.html#ISales_EditPrice_v1)
+[OPSkins API: ISales/EditPrice/v1](https://docs.opskins.com/public/en.html#ISales_EditPrice_v1)
 
 ### editPrices(sales, callback)
 - `sales` - An object whose keys are sale IDs and values are new prices, in USD cents. 500 items max.
@@ -692,7 +692,7 @@ This will fail if you attempt to queue a price update for an item which already 
 errors will not be reported and will be silently dropped in the background. For example, requests to edit the prices of
 items you do not own or which do not exist will be accepted, but will not actually be processed.
 
-[Opskins API: ISales/EditPriceMulti/v1](https://docs.opskins.com/public/en.html#ISales_EditPriceMulti_v1)
+[OPSkins API: ISales/EditPriceMulti/v1](https://docs.opskins.com/public/en.html#ISales_EditPriceMulti_v1)
 
 ### getListingLimit(callback)
 - `callback` - A function to be called when the request completes
@@ -701,7 +701,7 @@ items you do not own or which do not exist will be accepted, but will not actual
 
 Gets the current limit of how many items you can list at one time via [`listItems`](#listitemsitems-callback).
 
-[Opskins API: ISales/GetListingLimit/v1](https://docs.opskins.com/public/en.html#ISales_GetListingLimit_v1)
+[OPSkins API: ISales/GetListingLimit/v1](https://docs.opskins.com/public/en.html#ISales_GetListingLimit_v1)
 
 ### listItems(items, callback)
 - `items` - An array of objects, one object for each item you wish to list. Each object should contain these properties:
@@ -738,7 +738,7 @@ If there are already sales created for any of these items but they do not curren
 sales will be deleted and new ones will be created. This means that if this request fails to send a trade offer, you may
 safely re-request it for the same items.
 
-[Opskins API: ISales/ListItems/v1](https://docs.opskins.com/public/en.html#ISales_ListItems_v1)
+[OPSkins API: ISales/ListItems/v1](https://docs.opskins.com/public/en.html#ISales_ListItems_v1)
 
 ### bumpItems(saleids, callback)
 - `saleids` - An array of sale IDs
@@ -754,7 +754,7 @@ safely re-request it for the same items.
 Bumps one or more items. Bumps cost $0.50, and this will be charged to your account balance (unless you have free bump
 credits on your account, in which case those will be consumed first).
 
-[Opskins API: ISales/BumpItems/v1](https://docs.opskins.com/public/en.html#ISales_BumpItems_v1)
+[OPSkins API: ISales/BumpItems/v1](https://docs.opskins.com/public/en.html#ISales_BumpItems_v1)
 
 ### returnItems(saleids, callback)
 - `saleids` - An array of sale IDs
@@ -771,7 +771,7 @@ credits on your account, in which case those will be consumed first).
 Requests the return of one or more items you currently have listed for sale on your account. These items must currently
 be on sale (state 2) or awaiting return (state 5), and must not already have a trade offer out.
 
-[Opskins API: ISales/ReturnItems/v1](https://docs.opskins.com/public/en.html#ISales_ReturnItems_v1)
+[OPSkins API: ISales/ReturnItems/v1](https://docs.opskins.com/public/en.html#ISales_ReturnItems_v1)
 
 ### search(params, callback)
 - `params` - An object containing search parameters. Please [see here](https://opskins.com/kb/api-isales#method-search-v1) for documentation regarding this.
@@ -783,7 +783,7 @@ be on sale (state 2) or awaiting return (state 5), and must not already have a t
 Search active OPSkins listings for particular items. This endpoint is relatively heavily rate-limited. Current limits
 are documented on the [OPSkins knowledgebase](https://opskins.com/kb/api-isales#method-search-v1).
 
-[Opskins API: ISales/Search/v1](https://docs.opskins.com/public/en.html#ISales_Search_v1)
+[OPSkins API: ISales/Search/v1](https://docs.opskins.com/public/en.html#ISales_Search_v1)
 
 ### buyItems(saleids, total, callback)
 - `saleids` - An array of OPSkins sale IDs for the items you want to buy
@@ -803,16 +803,7 @@ Purchase one or more items and deliver them to your OPSkins inventory. Once purc
 your Steam inventory using `withdrawInventoryItems`. To prevent bot sniping, this endpoint will only purchase listings
 which have been publicly visible for at least ten minutes, and are not currently limited to Buyers Club members.
 
-[Opskins API: ISales/BuyItems/v1](https://docs.opskins.com/public/en.html#ISales_BuyItems_v1)
-
-### getBumpConfirmation(callback)
-
-Arguments:
-- `callback` - A function to be called when the request completes.
-    - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
-    
-[Opskins API: ISales/GetBumpConfirmation/v1](https://docs.opskins.com/public/en.html#ISales_GetBumpConfirmation_v1)
+[OPSkins API: ISales/BuyItems/v1](https://docs.opskins.com/public/en.html#ISales_BuyItems_v1)
 
 ### getLastSales(callback)
 
@@ -822,9 +813,9 @@ Arguments:
 - `market_name` - Item market name
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: ISales/GetLastSales/v1](https://docs.opskins.com/public/en.html#ISales_GetLastSales_v1)
+[OPSkins API: ISales/GetLastSales/v1](https://docs.opskins.com/public/en.html#ISales_GetLastSales_v1)
 
 ### getSaleDetails(saleid, callback)
 
@@ -832,50 +823,51 @@ Arguments:
 - `saleid` - Sale ID
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: ISales/GetSaleDetails/v1](https://docs.opskins.com/public/en.html#ISales_GetSaleDetails_v1)
+[OPSkins API: ISales/GetSaleDetails/v1](https://docs.opskins.com/public/en.html#ISales_GetSaleDetails_v1)
 
 ### getSaleStatuses(callback)
 
 Arguments:
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: ISales/GetSaleStatuses/v1](https://docs.opskins.com/public/en.html#ISales_GetSaleStatuses_v1)
+[OPSkins API: ISales/GetSaleStatuses/v1](https://docs.opskins.com/public/en.html#ISales_GetSaleStatuses_v1)
 
 ### getSearchSchema(callback)
 
 Arguments:
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: ISales/GetSearchSchema/v1](https://docs.opskins.com/public/en.html#ISales_GetSearchSchema_v1)
+[OPSkins API: ISales/GetSearchSchema/v1](https://docs.opskins.com/public/en.html#ISales_GetSearchSchema_v1)
 
 ### getSupportedSteamApps(callback)
 
 Arguments:
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: ISales/GetSupportedSteamApps/v1](https://docs.opskins.com/public/en.html#ISales_GetSupportedSteamApps_v1)
+[OPSkins API: ISales/GetSupportedSteamApps/v1](https://docs.opskins.com/public/en.html#ISales_GetSupportedSteamApps_v1)
 
-### getSalesHistoryChartData(callback)
+### getSalesHistoryChartData(params, callback)
 
 Arguments:
-- `appid` - Application ID
-- `contextid` - Context ID
-- `market_name` - Item market name
-- `days` - Number of days to get historical data
-- `phase` - Unusual index (TF2), pattern/paint index (CS:GO)
+- `params` - Parameter object with properties:
+    - `appid` - Application ID
+    - `contextid` - Context ID
+    - `market_name` - Item market name
+    - `days` - Number of days to get historical data
+    - `phase` - Unusual index (TF2), pattern/paint index (CS:GO)
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: ISales/GetSalesHistoryChartData/v1](https://docs.opskins.com/public/en.html#ISales_GetSalesHistoryChartData_v1)
+[OPSkins API: ISales/GetSalesHistoryChartData/v1](https://docs.opskins.com/public/en.html#ISales_GetSalesHistoryChartData_v1)
 
 ### returnItemsToInventory(callback)
 
@@ -883,9 +875,9 @@ Arguments:
 - `items` - Comma-separated list of item IDs
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: ISales/ReturnItemsToInventory/v1](https://docs.opskins.com/public/en.html#ISales_ReturnItemsToInventory_v1)
+[OPSkins API: ISales/ReturnItemsToInventory/v1](https://docs.opskins.com/public/en.html#ISales_ReturnItemsToInventory_v1)
 
 ## ISupport
 
@@ -903,7 +895,7 @@ on the same storage account. Sale IDs of all items which were successfully repai
 not belong to you. If this fails (`repaired` is `false`), then you will need to contact support in order to have this
 item repaired.
 
-[Opskins API: ISupport/RepairItem/v1](https://docs.opskins.com/public/en.html#ISupport_RepairItem_v1)
+[OPSkins API: ISupport/RepairItem/v1](https://docs.opskins.com/public/en.html#ISupport_RepairItem_v1)
 
 ## ITest
 
@@ -915,7 +907,7 @@ item repaired.
 
 Gets the SteamID of the account which owns this API key.
 
-[Opskins API: ITest/TestAuthed/v1](https://docs.opskins.com/public/en.html#ITest_TestAuthed_v1)
+[OPSkins API: ITest/TestAuthed/v1](https://docs.opskins.com/public/en.html#ITest_TestAuthed_v1)
 
 ## ITransactions
 
@@ -925,18 +917,18 @@ Arguments:
 - `params` - Parameters. See documentation
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: ITransactions/GetFailedPurchases/v1](https://docs.opskins.com/public/en.html#ITransactions_GetFailedPurchases_v1)
+[OPSkins API: ITransactions/GetFailedPurchases/v1](https://docs.opskins.com/public/en.html#ITransactions_GetFailedPurchases_v1)
 
 ### getMonetaryTransactionHistory(callback)
 
 Arguments:
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: ITransactions/GetMonetaryTransactionHistory/v1](https://docs.opskins.com/public/en.html#ITransactions_GetMonetaryTransactionHistory_v1)
+[OPSkins API: ITransactions/GetMonetaryTransactionHistory/v1](https://docs.opskins.com/public/en.html#ITransactions_GetMonetaryTransactionHistory_v1)
 
 ### getOperationPointsTransactionHistory(params, callback)
 
@@ -944,9 +936,9 @@ Arguments:
 - `params` - Parameters. See documentation
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: ITransactions/GetOperationPointsTransactionHistory/v1](https://docs.opskins.com/public/en.html#ITransactions_GetOperationPointsTransactionHistory_v1)
+[OPSkins API: ITransactions/GetOperationPointsTransactionHistory/v1](https://docs.opskins.com/public/en.html#ITransactions_GetOperationPointsTransactionHistory_v1)
 
 ### getPurchaseHistory(params, callback)
 
@@ -954,18 +946,18 @@ Arguments:
 - `params` - Parameters. See documentation
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: ITransactions/GetPurchaseHistory/v1](https://docs.opskins.com/public/en.html#ITransactions_GetPurchaseHistory_v1)
+[OPSkins API: ITransactions/GetPurchaseHistory/v1](https://docs.opskins.com/public/en.html#ITransactions_GetPurchaseHistory_v1)
 
 ### getTransactionTypes(callback)
 
 Arguments:
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: ITransactions/GetTransactionTypes/v1](https://docs.opskins.com/public/en.html#ITransactions_GetTransactionTypes_v1)
+[OPSkins API: ITransactions/GetTransactionTypes/v1](https://docs.opskins.com/public/en.html#ITransactions_GetTransactionTypes_v1)
 
 ### getWalletTransactionHistory(params, callback)
 
@@ -973,9 +965,9 @@ Arguments:
 - `params` - Parameters. See documentation
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: ITransactions/GetWalletTransactionHistory/v1](https://docs.opskins.com/public/en.html#ITransactions_GetWalletTransactionHistory_v1)
+[OPSkins API: ITransactions/GetWalletTransactionHistory/v1](https://docs.opskins.com/public/en.html#ITransactions_GetWalletTransactionHistory_v1)
 
 ## IUser
 
@@ -986,27 +978,27 @@ Arguments:
 - `auto_renew` - Boolean if the subscription should auto renew after active length period (optional)
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: IUser/AddSubscription/v1](https://docs.opskins.com/public/en.html#IUser_AddSubscription_v1)
+[OPSkins API: IUser/AddSubscription/v1](https://docs.opskins.com/public/en.html#IUser_AddSubscription_v1)
 
 ### getAccountSummary(callback)
 
 Arguments:
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: IUser/GetAccountSummary/v1](https://docs.opskins.com/public/en.html#IUser_GetAccountSummary_v1)
+[OPSkins API: IUser/GetAccountSummary/v1](https://docs.opskins.com/public/en.html#IUser_GetAccountSummary_v1)
 
 ### getApiKeyDetails(callback)
 
 Arguments:
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: IUser/GetApiKeyDetails/v1](https://docs.opskins.com/public/en.html#IUser_GetApiKeyDetails_v1)
+[OPSkins API: IUser/GetApiKeyDetails/v1](https://docs.opskins.com/public/en.html#IUser_GetApiKeyDetails_v1)
 
 ### getBalance(callback)
 - `callback` - A function to be called when the request completes
@@ -1015,61 +1007,61 @@ Arguments:
 
 Gets your OPSkins account's current balance.
 
-[Opskins API: IUser/GetBalance/v1](https://docs.opskins.com/public/en.html#IUser_GetBalance_v1)
+[OPSkins API: IUser/GetBalance/v1](https://docs.opskins.com/public/en.html#IUser_GetBalance_v1)
 
 ### getConvertibleBalance(callback)
 
 Arguments:
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: IUser/GetConvertibleBalance/v1](https://docs.opskins.com/public/en.html#IUser_GetConvertibleBalance_v1)
+[OPSkins API: IUser/GetConvertibleBalance/v1](https://docs.opskins.com/public/en.html#IUser_GetConvertibleBalance_v1)
 
 ### getCredits(callback)
 
 Arguments:
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: IUser/GetCredits/v1](https://docs.opskins.com/public/en.html#IUser_GetCredits_v1)
+[OPSkins API: IUser/GetCredits/v1](https://docs.opskins.com/public/en.html#IUser_GetCredits_v1)
 
 ### getProfile(callback)
 
 Arguments:
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: IUser/GetProfile/v1](https://docs.opskins.com/public/en.html#IUser_GetProfile_v1)
+[OPSkins API: IUser/GetProfile/v1](https://docs.opskins.com/public/en.html#IUser_GetProfile_v1)
 
 ### getSubscriptionsStatus(callback)
 
 Arguments:
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: IUser/GetSubscriptionsStatus/v1](https://docs.opskins.com/public/en.html#IUser_GetSubscriptionsStatus_v1)
+[OPSkins API: IUser/GetSubscriptionsStatus/v1](https://docs.opskins.com/public/en.html#IUser_GetSubscriptionsStatus_v1)
 
 ### getSuggestionTypes(callback)
 
 Arguments:
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: IUser/GetSuggestionTypes/v1](https://docs.opskins.com/public/en.html#IUser_GetSuggestionTypes_v1)
+[OPSkins API: IUser/GetSuggestionTypes/v1](https://docs.opskins.com/public/en.html#IUser_GetSuggestionTypes_v1)
 
 ### getWhitelistStatus(callback)
 
 Arguments:
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: IUser/GetWhitelistStatus/v1](https://docs.opskins.com/public/en.html#IUser_GetWhitelistStatus_v1)
+[OPSkins API: IUser/GetWhitelistStatus/v1](https://docs.opskins.com/public/en.html#IUser_GetWhitelistStatus_v1)
 
 ### updateTradeURL(url, callback)
 - `url` - Your new Trade URL
@@ -1081,7 +1073,7 @@ Arguments:
 Update the Steam Trade URL which is linked with your account. It must belong to the same Steam account as is linked
 to your OPSkins account.
 
-[Opskins API: IUser/SaveTradeURL/v1](https://docs.opskins.com/public/en.html#IUser_SaveTradeURL_v1)
+[OPSkins API: IUser/SaveTradeURL/v1](https://docs.opskins.com/public/en.html#IUser_SaveTradeURL_v1)
 
 ### lockAccount(callback)
 
@@ -1089,7 +1081,7 @@ Arguments:
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
     
-[Opskins API: IUser/SelfLockAccount/v1](https://docs.opskins.com/public/en.html#IUser_SelfLockAccount_v1)
+[OPSkins API: IUser/SelfLockAccount/v1](https://docs.opskins.com/public/en.html#IUser_SelfLockAccount_v1)
 
 ### toggleRenewSubscription(sub_id, callback)
 
@@ -1097,9 +1089,9 @@ Arguments:
 - `sub_id` - ID of the subscription type
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: IUser/ToggleRenewSubscription/v1](https://docs.opskins.com/public/en.html#IUser_ToggleRenewSubscription_v1)
+[OPSkins API: IUser/ToggleRenewSubscription/v1](https://docs.opskins.com/public/en.html#IUser_ToggleRenewSubscription_v1)
 
 ### updateProfile(params, callback)
 
@@ -1107,9 +1099,9 @@ Arguments:
 - `params` - Parameters. See documentation
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: IUser/UpdateProfile/v1](https://docs.opskins.com/public/en.html#IUser_UpdateProfile_v1)
+[OPSkins API: IUser/UpdateProfile/v1](https://docs.opskins.com/public/en.html#IUser_UpdateProfile_v1)
 
 ### updateSMSPhoneNumber(phone, login_verification, callback)
 
@@ -1118,9 +1110,9 @@ Arguments:
 - `login_verification` - Use phone login verification instead of email?
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: IUser/UpdateSMSPhoneNumber/v1](https://docs.opskins.com/public/en.html#IUser_UpdateSMSPhoneNumber_v1)
+[OPSkins API: IUser/UpdateSMSPhoneNumber/v1](https://docs.opskins.com/public/en.html#IUser_UpdateSMSPhoneNumber_v1)
 
 ### verifyPhoneCode(code, callback)
 
@@ -1128,9 +1120,9 @@ Arguments:
 - `code` - 	Verification code delivered via SMS
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See Opskins API documentation for details
+    - `response` - See OPSkins API documentation for details
     
-[Opskins API: IUser/VerifyPhoneCode/v1](https://docs.opskins.com/public/en.html#IUser_VerifyPhoneCode_v1)
+[OPSkins API: IUser/VerifyPhoneCode/v1](https://docs.opskins.com/public/en.html#IUser_VerifyPhoneCode_v1)
 
 ## IStatus
 
@@ -1145,7 +1137,7 @@ Retrieves a listing of all active OPSkins bots, namely their internal IDs (the n
 
 You may wish to note that some internal IDs have either been skipped or retired, so this list is not exactly sequential.
 
-[Opskins API: IStatus/GetBotList/v1](https://docs.opskins.com/public/en.html#IStatus_GetBotList_v1)
+[OPSkins API: IStatus/GetBotList/v1](https://docs.opskins.com/public/en.html#IStatus_GetBotList_v1)
 
 # Events
 

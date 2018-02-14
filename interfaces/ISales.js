@@ -149,17 +149,6 @@ OPSkinsAPI.prototype.buyItems = function(saleids, total, callback) {
 	});
 };
 
-OPSkinsAPI.prototype.getBumpConfirmation = function(callback) {
-	this._requireKey();
-	this.get("ISales", "GetBumpConfirmation", 1, function(err, res) {
-		if (err) {
-			callback(err);
-		} else {
-			callback(null, res);
-		}
-	});
-};
-
 OPSkinsAPI.prototype.getLastSales = function(appid, contextid, market_name, callback) {
 	this._requireKey();
 	this.get("ISales", "GetLastSales", 1, {
@@ -219,15 +208,9 @@ OPSkinsAPI.prototype.getSupportedSteamApps = function(callback) {
 	});
 };
 
-OPSkinsAPI.prototype.getSalesHistoryChartData = function(appid, contextid, market_name, days, phase, callback) {
+OPSkinsAPI.prototype.getSalesHistoryChartData = function(params, callback) {
 	this._requireKey();
-	this.get("ISales", "GetSalesHistoryChartData", 1, {
-		"appid": appid,
-		"contextid": contextid,
-		"market_name": market_name,
-		"days": days,
-		"phase": phase
-	}, function(err, res) {
+	this.get("ISales", "GetSalesHistoryChartData", 1, params, function(err, res) {
 		if (err) {
 			callback(err);
 		} else {

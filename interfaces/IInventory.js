@@ -32,13 +32,14 @@ OPSkinsAPI.prototype.getInstantSaleInventory = function(callback) {
 	});
 };
 
+// @deprecated
 OPSkinsAPI.prototype.getInventory = function(callback) {
 	this._requireKey();
 	this.get("IInventory", "GetInventory", 1, function(err, res) {
 		if (err) {
 			callback(err);
 		} else {
-			callback(null, res.items, res.commodities);
+			callback(null, res);
 		}
 	});
 };
