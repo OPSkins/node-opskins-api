@@ -869,7 +869,7 @@ Arguments:
     
 [OPSkins API: ISales/GetSalesHistoryChartData/v1](https://docs.opskins.com/public/en.html#ISales_GetSalesHistoryChartData_v1)
 
-### returnItemsToInventory(callback)
+### returnItemsToInventory(items, callback)
 
 Arguments:
 - `items` - Comma-separated list of item IDs
