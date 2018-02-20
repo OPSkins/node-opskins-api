@@ -805,7 +805,7 @@ which have been publicly visible for at least ten minutes, and are not currently
 
 [OPSkins API: ISales/BuyItems/v1](https://docs.opskins.com/public/en.html#ISales_BuyItems_v1)
 
-### getLastSales(callback)
+### getLastSales(appid, contextid, market_name, callback)
 
 Arguments:
 - `appid` - Application ID
@@ -872,7 +872,7 @@ Arguments:
 ### returnItemsToInventory(items, callback)
 
 Arguments:
-- `items` - Comma-separated list of item IDs
+- `items` - Array of item IDs
 - `callback` - A function to be called when the request completes.
     - `err` - An `Error` object on failure, or `null` on success
     - `response` - See OPSkins API documentation for details

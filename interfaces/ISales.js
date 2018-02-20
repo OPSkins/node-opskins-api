@@ -221,7 +221,11 @@ OPSkinsAPI.prototype.getSalesHistoryChartData = function(params, callback) {
 
 OPSkinsAPI.prototype.returnItemsToInventory = function(items, callback) {
 	this._requireKey();
-	this.post("ISales", "ReturnItemsToInventory", 1, {"items": items}, function(err, res) {
+	if (!Array.isArray(items)) {
+		items = [items];
+	}
+
+	this.post("ISales", "ReturnItemsToInventory", 1, {"items": items.join(',')}, function(err, res) {
 		if (!callback) {
 			return;
 		}
