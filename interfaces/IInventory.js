@@ -7,7 +7,7 @@ OPSkinsAPI.prototype.depositInventory = function(items, callback) {
 		items = [items];
 	}
 
-	this.post("IInventory", "Deposit", 1, {"items": items}, function(err, res) {
+	this.post("IInventory", "Deposit", 1, {"items": JSON.stringify(items)}, function(err, res) {
 		if (!callback) {
 			return;
 		}
