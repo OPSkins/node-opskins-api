@@ -854,21 +854,6 @@ Arguments:
     
 [OPSkins API: ISales/GetSupportedSteamApps/v1](https://docs.opskins.com/public/en.html#ISales_GetSupportedSteamApps_v1)
 
-### getSalesHistoryChartData(params, callback)
-
-Arguments:
-- `params` - Parameter object with properties:
-    - `appid` - Application ID
-    - `contextid` - Context ID
-    - `market_name` - Item market name
-    - `days` - Number of days to get historical data
-    - `phase` - Unusual index (TF2), pattern/paint index (CS:GO)
-- `callback` - A function to be called when the request completes.
-    - `err` - An `Error` object on failure, or `null` on success
-    - `response` - See OPSkins API documentation for details
-    
-[OPSkins API: ISales/GetSalesHistoryChartData/v1](https://docs.opskins.com/public/en.html#ISales_GetSalesHistoryChartData_v1)
-
 ### returnItemsToInventory(items, callback)
 
 Arguments:

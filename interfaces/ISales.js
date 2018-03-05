@@ -208,17 +208,6 @@ OPSkinsAPI.prototype.getSupportedSteamApps = function(callback) {
 	});
 };
 
-OPSkinsAPI.prototype.getSalesHistoryChartData = function(params, callback) {
-	this._requireKey();
-	this.get("ISales", "GetSalesHistoryChartData", 1, params, function(err, res) {
-		if (err) {
-			callback(err);
-		} else {
-			callback(null, res);
-		}
-	});
-};
-
 OPSkinsAPI.prototype.returnItemsToInventory = function(items, callback) {
 	this._requireKey();
 	if (!Array.isArray(items)) {
