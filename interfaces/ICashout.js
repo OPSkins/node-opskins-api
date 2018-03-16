@@ -67,7 +67,7 @@ OPSkinsAPI.prototype.requestPayPalCashout = function(amount, priority, callback)
 	}
 
 	this._requireKey();
-	this.post("ICashout", "RequestPayPal", 1, {"amount": amount, "priority": priority ? 1 : 0}, function(err, res) {
+	this.post("ICashout", "RequestPayPal", 1, {"amount": Math.floor(amount/500)*500, "priority": priority ? 1 : 0}, function(err, res) {
 		if (!callback) {
 			return;
 		}
@@ -87,7 +87,7 @@ OPSkinsAPI.prototype.requestBitcoinCashout = function(amount, priority, callback
 		callback = priority;
 		priority = false;
 	}
-	this.post("ICashout", "RequestBitcoin", 1, {"amount": amount, "priority": priority ? 1 : 0}, function(err, res) {
+	this.post("ICashout", "RequestBitcoin", 1, {"amount": Math.floor(amount/500)*500, "priority": priority ? 1 : 0}, function(err, res) {
 		if (!callback) {
 			return;
 		}
@@ -104,7 +104,7 @@ OPSkinsAPI.prototype.requestBitcoinCashout = function(amount, priority, callback
 OPSkinsAPI.prototype.requestEthereumCashout = function(amount, callback) {
 	this._requireKey();
 
-	this.post("ICashout", "RequestEthereum", 1, {"amount": amount, "priority": priority}, function(err, res) {
+	this.post("ICashout", "RequestEthereum", 1, {"amount": Math.floor(amount/500)*500, "priority": priority}, function(err, res) {
 		if (!callback) {
 			return;
 		}
@@ -120,7 +120,7 @@ OPSkinsAPI.prototype.requestEthereumCashout = function(amount, callback) {
 
 OPSkinsAPI.prototype.requestSkrillCashout = function(amount, callback) {
 	this._requireKey();
-	this.post("ICashout", "RequestSkrill", 1, {"amount": amount}, function(err, res) {
+	this.post("ICashout", "RequestSkrill", 1, {"amount": Math.floor(amount/500)*500}, function(err, res) {
 		if (!callback) {
 			return;
 		}
