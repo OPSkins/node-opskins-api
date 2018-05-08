@@ -138,6 +138,17 @@ OPSkinsAPI.prototype.search = function(params, callback) {
 	});
 };
 
+OPSkinsAPI.prototype.searchV2 = function(params, callback) {
+	this._requireKey();
+	this.get("ISales", "Search", 2, params, function(err, res) {
+		if (err) {
+			callback(err);
+		} else {
+			callback(null, res.sales);
+		}
+	});
+};
+
 OPSkinsAPI.prototype.buyItems = function(saleids, total, callback) {
 	this._requireKey();
 	this.post("ISales", "BuyItems", 1, {"saleids": saleids.join(','), "total": total}, function(err, res, meta) {
