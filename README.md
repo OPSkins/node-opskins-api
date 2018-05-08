@@ -785,6 +785,17 @@ are documented on the [OPSkins knowledgebase](https://opskins.com/kb/api-isales#
 
 [OPSkins API: ISales/Search/v1](https://docs.opskins.com/public/en.html#ISales_Search_v1)
 
+### searchV2(params, callback)
+- `params` - An object containing search parameters. Please [see here](https://docs.opskins.com/public/en.html#ISales_Search_v2) for documentation regarding this.
+- `callback` - A function to be called when the request completes
+    - `err` - An `Error` object on failure, or `null` on success
+
+**v1.6.0 or later is required to use this method**
+
+Search active OPSkins listings for particular items. This endpoint is relatively heavily rate-limited. Current limits are documented [here](https://docs.opskins.com/public/en.html#ISales_Search_v2).
+
+[OPSkins API: ISales/Search/v2](https://docs.opskins.com/public/en.html#ISales_Search_v2)
+
 ### buyItems(saleids, total, callback)
 - `saleids` - An array of OPSkins sale IDs for the items you want to buy
 - `total` - The total cost of the items you wish to buy, in USD cents. If this is not correct, the request will fail.
