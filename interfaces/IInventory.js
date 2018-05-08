@@ -72,14 +72,19 @@ OPSkinsAPI.prototype.getSteamInstantSellItems = function(appid, contextid, callb
 	});
 };
 
-OPSkinsAPI.prototype.withdrawInventoryItems = function(items, callback) {
+OPSkinsAPI.prototype.withdrawInventoryItems = function(items, delivery, callback) {
+	if (typeof delivery === 'function') {
+		callback = delivery;
+		delivery = null;
+	}
+	
 	this._requireKey();
 
 	if (!(items instanceof Array)) {
 		items = [items];
 	}
 
-	this.post("IInventory", "Withdraw", 1, {"items": items.join(',')}, function(err, res) {
+	this.post("IInventory", "Withdraw", 1, {"items": items.join(','), "delivery_id64": delivery.id64, "delivery_token": delivery.token, "delivery_message": delivery.message}, function(err, res) {
 		if (err && !res) {
 			callback(err);
 		} else {
