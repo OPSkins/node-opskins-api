@@ -129,7 +129,7 @@ OPSkinsAPI.prototype.getActiveTradeOffers = function(callback) {
 
 OPSkinsAPI.prototype.search = function(params, callback) {
 	this._requireKey();
-	this.get("ISales", "Search", 1, params, function(err, res) {
+	this.get("ISales", "Search", 2, params, function(err, res) {
 		if (err) {
 			callback(err);
 		} else {
