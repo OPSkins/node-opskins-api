@@ -1,5 +1,17 @@
 var OPSkinsAPI = require('../index.js');
 
+OPSkinsAPI.prototype.TransferFunds = function(params, callback) {
+	this._requireKey();
+	this.post("ITransactions", "TransferFunds", 1, params, function(err, res) {
+		if (err) {
+			callback(err);
+			return;
+		}
+
+		callback(null, res);
+	});
+};
+
 OPSkinsAPI.prototype.getFailedPurchases = function(params, callback) {
 	this._requireKey();
 	this.get("ITransactions", "GetFailedPurchases", 1, params, function(err, res) {
