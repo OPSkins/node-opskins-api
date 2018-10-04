@@ -907,6 +907,18 @@ Gets the SteamID of the account which owns this API key.
 
 ## ITransactions
 
+### TransferFunds(params, callback)
+
+**This endpoint requires pre-approval. If you wish to use this functionality please contact OPSkins support.**
+
+Arguments:
+- `params` - Parameters. See documentation
+- `callback` - A function to be called when the request completes.
+    - `err` - An `Error` object on failure, or `null` on success
+    - `response` - See OPSkins API documentation for details
+    
+[OPSkins API: ITransactions/TransferFunds/v1](https://docs.opskins.com/public/en.html#ITransactions_TransferFunds_v1)
+
 ### getFailedPurchases(params, callback)
 
 Arguments:
