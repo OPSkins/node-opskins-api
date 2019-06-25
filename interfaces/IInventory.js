@@ -92,7 +92,21 @@ OPSkinsAPI.prototype.withdrawInventoryItems = function(items, delivery, callback
 		}
 	});
 };
-
+OPSkinsAPI.prototype.transferToTradeSite = function(items, callback) {
+	this._requireKey();
+	
+	if (!(items instanceof Array)) {
+		items = [items];
+	}
+	
+	this.post("IInventory", "TransferToTradeSite", 1, {"items": items.join(',')}, function(err, res) {
+		if (err && !res) {
+			callback(err);
+			return;
+		}
+		callback(null, res);
+	});
+};
 OPSkinsAPI.prototype.withdrawCryptoAsset = function(saleid, address, callback) {
 	this._requireKey();
 	this.post("IInventory", "WithdrawCryptoAsset", 1, {
